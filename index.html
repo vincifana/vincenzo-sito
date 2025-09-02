@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ciao da Vincenzo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      color: #222;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header {
+      padding: 20px;
+      background-color: rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+    button {
+      padding: 6px 12px;
+      margin: 5px;
+      font-weight: bold;
+      background-color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid #ccc;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .hidden {
+      display: none;
+    }
+    h2 {
+      margin-bottom: 10px;
+      color: #ff4500;
+    }
+    h3 {
+      margin-top: 30px;
+      margin-bottom: 5px;
+      font-size: 1.1em;
+      color: #333;
+    }
+    audio {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    #demoContainer {
+      display: none;
+    }
+    #controls {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style><button onclick="toggleDarkMode()">🌙 Modalità Notte</button>
+
+</head>
+<body>
+
+<header>
+  <h1><span id="ciao">Ciao</span> da Vincenzo</h1>
+  <div id="lingue" style="text-align: center; margin-top: 20px;">
+    <button onclick="toggleLingue()" style="font-size: 1.5em;">🌐 🇮🇹</button>
+    <div id="bandiere" class="hidden" style="margin-top: 10px;">
+      <span onclick="switchLang('it')">🇮🇹</span>
+      <span onclick="switchLang('en')">🇬🇧</span>
+      <span onclick="switchLang('es')">🇪🇸</span>
+      <span onclick="switchLang('de')">🇩🇪</span>
+      <span onclick="switchLang('fr')">🇫🇷</span>
+    </div>
+  </div>
+</header>
+
+<div id="controls">
+  <button onclick="bloccaColore()">🎨 Blocca sfondo</button>
+  <button onclick="riattivaColore()">🔄 Riattiva sfondo</button>
+  <button onclick="playPlaylist()">▶️ Riproduci tutte le demo</button>
+  <button onclick="stopPlaylist()">⏹️ Ferma playlist</button>
+  <button onclick="toggleDemo()">🎧 Mostra/Nascondi Demo</button>
+</div><button onclick="toggleDarkMode()">🌙 Modalità Notte</button>
+
+
+<section style="position: fixed; top: 100px; left: 10px; z-index: 999;">
+  <h3 style="font-size: 0.9em; margin-bottom: 5px;">🎨 Colori</h3>
+  <div style="display: flex; flex-direction: column; gap: 6px; font-size: 1.5em;">
+    <span onclick="setColor('#ff4d4d')" style="cursor: pointer;">🔴</span>
+    <span onclick="setColor('#ffa64d')" style="cursor: pointer;">🟠</span>
+    <span onclick="setColor('#cc66ff')" style="cursor: pointer;">🟣</span>
+    <span onclick="setColor('#4da6ff')" style="cursor: pointer;">🔵</span>
+    <span onclick="setColor('#66cc66')" style="cursor: pointer;">🟢</span>
+  </div>
+</section>
+
+</section>
+
+<section id="descrizione-it">
+  <h2>Chi sono</h2>
+  <p>Vincenzo è un artista digitale con l’anima di un compositore e la mente di un visionario...</p>
+</section>
+<section id="descrizione-en" class="hidden"><h2>About Me</h2><p>...</p></section>
+<section id="descrizione-es" class="hidden"><h2>Sobre mí</h2><p>...</p></section>
+<section id="descrizione-de" class="hidden"><h2>Über mich</h2><p>...</p></section>
+<section id="descrizione-fr" class="hidden"><h2>À propos de moi</h2><p>...</p></section>
+
+<section id="demoContainer">
+  <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
+  <p>Ascolta i miei brani originali:</p>
+  <audio controls src="musica/The_One_Who_Gave_Without_Asking.mp3"></audio>
+  <audio controls src="musica/Codici_nta_u_sangu_4.mp3"></audio>
+  <audio controls src="musica/Codici_nta_u_sangu_8.mp3"></audio>
+  <audio controls src="musica/Ela_Que_Deus_Me_Deu.mp3"></audio>
+  <audio controls src="musica/La_Cara_que_Cambia.mp3"></audio>
+  <audio controls src="musica/Maschere_e_Verita_4.mp3"></audio>
+  <audio controls src="musica/Nel_cuore_che_ama.mp3"></audio>
+  <audio controls src="musica/Perfectly_Made.mp3"></audio>
+  <audio controls src="musica/Quel_che_resta_da_salvare.mp3"></audio>
+  <audio controls src="musica/The_Heart_That_Loves.mp3"></audio>
+  <audio controls src="musica/Anima_di_Soul_e_Vita.mp3"></audio>
+  <audio controls src="musica/Liens_qui_restent.mp3"></audio>
+  <audio controls src="musica/Boards_and_Moves.mp3"></audio>
+  <audio controls src="musica/demo1.mp3"></audio>
+  <audio controls src="musica/demo2.mp3"></audio>
+</section>
+
+<div style="text-align: center; margin-top: 40px;">
+  <button onclick="toggleContatti()">📬 Scrivimi</button>
+</div>
+
+<section id="contatti" class="hidden" style="text-align: center; margin-top: 40px;">
+  <h2>📬 Contattami</h2>
+  <p>Email: <a href="mailto:vfanara@sunrise.ch">vfanara@sunrise.ch</a></p>
+  <p>Telefono: <a href="tel:+41763430047">+41 76 343 00 47</a></p>
+  <form style="margin-top: 20px;">
+    <input type="text" placeholder="Il tuo nome" style="padding: 8px; width: 80%; max-width: 300px;"><br>
+    <textarea placeholder="Il tuo messaggio" style="padding: 8px; width: 80%; max-width: 300px; height: 100px;"></textarea><br>
+    <button type="submit">📨 Invia messaggio</button>
+  </form>
+</section>
+
+<footer style="text-align: center; margin-top: 60px; font-size: 0.9em; color: #666; padding: 20px;">
+  <div id="orologio" style="font-size: 1.2em; margin-bottom: 10px;"></div>
+  <p>© Vincenzo Fanara – Svizzera</p>
+  <p>
+    <a href="mailto:vfanara@sunrise.ch">📧 Email</a> |
+    <a href="https://www.instagram.com" target="_blank">📸 Instagram</a> |
+    <a href="https://www.youtube.com" target="_blank">🎥 YouTube</a>
+  </p>
+  <p style="margin-top: 10
+  px; font-style: italic;">Creato con passione e vibrazioni musicali 🎶</p>
+</footer>
+
+<script>
+  // Animazione saluto "Ciao"
+  const greetings = [
+    { text: "Ciao", color: "#ff4500" },
+    { text: "Hello", color: "#1e90ff" },
+    { text: "Hola", color: "#32cd32" },
+    { text: "Hallo", color: "#ff1493" },
+    { text: "Bonjour", color: "#8a2be2" }
+  ];
+  let g = 0;
+  setInterval(() => {
+    const el = document.getElementById("ciao");
+    el.textContent = greetings[g].text;
+    el.style.color = greetings[g].color;
+    g = (g + 1) % greetings.length;
+  }, 2000);
+
+  // Titolo demo animato
+  const titoliDemo = [
+    { text: "🎧 Le Mie Demo Musicali", color: "#ff4500" },
+    { text: "🎧 My Musical Demos", color: "#1e90ff" },
+    { text: "🎧 Mis Demos Musicales", color: "#32cd32" },
+    { text: "🎧 Meine Musikdemos", color: "#ff1493" },
+    { text: "🎧 Mes Démos Musicales", color: "#8a2be2" }
+  ];
+  let i = 0;
+  setInterval(() => {
+    const el = document.getElementById("titoloDemo");
+    el.textContent = titoliDemo[i].text;
+    el.style.color = titoliDemo[i].color;
+    i = (i + 1) % titoliDemo.length;
+  }, 2000);
+
+  // Funzioni interattive
+  function switchLang(lang) {
+    const lingue = ['it', 'en', 'es', 'de', 'fr'];
+    lingue.forEach(id => {
+      document.getElementById('descrizione-' + id).classList.add('hidden');
+    });
+    document.getElementById('descrizione-' + lang).classList.remove('hidden');
+  }
+
+  function toggleLingue() {
+    const box = document.getElementById("bandiere");
+    box.classList.toggle("hidden");
+  }
+
+  function toggleContatti() {
+    const contatti = document.getElementById("contatti");
+    contatti.classList.toggle("hidden");
+  }
+
+  function bloccaColore() {
+    document.body.style.animation = "none";
+  }
+
+  function riattivaColore() {
+    document.body.style.background = "linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb)";
+    document.body.style.backgroundSize = "400% 400%";
+    document.body.style.animation = "gradientShift 20s ease infinite";
+  }
+
+  function setColor(color) {
+    document.body.style.background = color;
+    document.body.style.animation = "none";
+  }
+
+  function toggleDemo() {
+    const demo = document.getElementById("demoContainer");
+    demo.style.display = demo.style.display === "none" ? "block" : "none";
+  }
+
+  const playlist = [
+    "musica/The_One_Who_Gave_Without_Asking.mp3",
+    "musica/Codici_nta_u_sangu_4.mp3",
+    "musica/Ela_Que_Deus_Me_Deu.mp3",
+    "musica/La_Cara_que_Cambia.mp3",
+    "musica/Maschere_e_Verita_4.mp3",
+    "musica/Nel_cuore_che_ama.mp3",
+    "musica/Perfectly_Made.mp3",
+    "musica/Quel_che_resta_da_salvare.mp3",
+    "musica/The_Heart_That_Loves.mp3",
+    "musica/Anima_di_Soul_e_Vita.mp3",
+    "musica/Liens_qui_restent.mp3",
+    "musica/Boards_and_Moves.mp3",
+    "musica/demo1.mp3",
+    "musica/demo2.mp3"
+  ];
+
+  let currentTrack = 0;
+  let player = new Audio();
+
+  function playPlaylist() {
+    currentTrack = 0;
+    player.src = playlist[currentTrack];
+    player.play();
+    player.onended = () => {
+      currentTrack++;
+      if (currentTrack < playlist.length) {
+        player.src = playlist[currentTrack];
+        player.play();
+      }
+    };
+  }
+
+  function stopPlaylist() {
+    player.pause();
+    player.currentTime = 0;
+  }
+
+  // Orologio digitale
+  setInterval(() => {
+    const now = new Date();
+    const orologio = document.getElementById("orologio");
+    if (orologio) {
+      orologio.textContent = now.toLocaleTimeString('it-CH', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+    }
+  }, 1000);
+</script><button onclick="toggleDarkMode()">🌙 Modalità Notte</button>
+
+
+</body>
+</html>
