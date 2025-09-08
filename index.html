@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ciao da Vincenzo</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin:0; padding:0;
+  background: linear-gradient(135deg,#ffecd2,#fcb69f,#a1c4fd,#c2e9fb);
+  background-size:400% 400%;
+  animation: gradientShift 20s ease infinite;
+  color:#222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+@keyframes gradientShift {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+header, main, footer, section { transition: all 0.3s ease; }
+header { padding:20px; text-align:center; background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px);}
+h1{ margin:0; }
+#orologio{ font-size:1.2em; margin:10px 0; }
+#lingue{ margin-top:10px; text-align:center; }
+#bandiere span{ cursor:pointer; font-size:1.5em; margin:0 4px; }
+#controls{ margin:20px auto; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;}
+#controls button{ font-size:1.5em; width:50px; height:50px; border-radius:50%; border:none; background: rgba(255,255,255,0.85); box-shadow:0 3px 8px rgba(0,0,0,0.2); cursor:pointer; position:relative;}
+#controls button:hover::after,#controls button.touch-tooltip::after{ content: attr(data-title); position:absolute; bottom:110%; left:50%; transform:translateX(-50%); background:#333; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.8em; white-space:nowrap; z-index:1000;}
+#controls button:hover::before,#controls button.touch-tooltip::before{ content:""; position:absolute; bottom:100%; left:50%; transform:translateX(-50%); border-width:6px; border-style:solid; border-color:#333 transparent transparent transparent;}
+#controls button:hover, #controls button.touch-tooltip{ transform:scale(1.15); background: rgba(255,255,255,1); }
+.dark-mode{ background:#111 !important; color:#eee !important; }
+.dark-mode header, .dark-mode footer, .dark-mode section, .dark-mode main{ background:#222 !important; color:#eee !important; }
+.dark-mode a{ color:#4da6ff !important; }
+#colorPicker{ position:fixed; top:130px; left:10px; z-index:999; display:flex; flex-direction:column; gap:8px;}
+#colorPicker span{ font-size:1.5em; cursor:pointer; }
+main{ flex:1; display:flex; flex-direction: column; justify-content:flex-start; align-items:center; width:100%; }
+section{ padding:40px 20px; max-width:1000px; margin:auto; text-align:center; }
+.hidden{ display:none; }
+audio{ width:100%; margin-bottom:20px; }
+#btnMe{ display:block; margin:20px auto; padding:8px 16px; cursor:pointer; background:#4da6ff; color:white; border:none; border-radius:5px; }
+#contatti{ position:fixed; bottom:60px; left:50%; transform:translateX(-50%); width:300px; background:#fff; color:#222; border-radius:10px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.3); z-index:1000; }
+#contatti form input, #contatti form textarea{ padding:8px; width:100%; margin-bottom:8px;}
+#contatti form textarea{height:80px;}
+#contatti form button{ padding:6px 12px; cursor:pointer; background:#4da6ff; color:white; border:none; border-radius:5px;}
+footer{text-align:center; margin-top:20px; font-size:0.9em; color:#666; padding:20px;}
+footer a{ color:#666; text-decoration:none; margin:0 5px;}
+footer a:hover{text-decoration:underline;}
+@media (max-width: 600px) { header h1 { font-size: 1.8rem; } #controls { gap: 6px; } #controls button { width: 40px; height: 40px; font-size: 1.2rem; } section { padding: 20px 10px; } #contatti { width: 90%; bottom: 20px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><span id="ciao">Ciao</span> da <span id="nome">Vincenzo</span></h1>
+  <div id="orologio"></div>
+  <div id="lingue">
+    <button onclick="toggleLingue()" title="Seleziona lingua">🌐</button>
+    <div id="bandiere" class="hidden">
+      <span onclick="switchLang('it')">🇮🇹</span>
+      <span onclick="switchLang('en')">🇬🇧</span>
+      <span onclick="switchLang('es')">🇪🇸</span>
+      <span onclick="switchLang('de')">🇩🇪</span>
+      <span onclick="switchLang('fr')">🇫🇷</span>
+    </div>
+  </div>
+</header>
+
+<!-- Pulsante piccolo per musica di sottofondo -->
+<button id="bgBtn" onclick="toggleBgAudio()" 
+        style="position:fixed;top:10px;right:10px;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;z-index:9999;">
+  🎵
+</button>
+<audio id="bgAudio" src="musica/eric.mp3" loop></audio>
+
+<main>
+  <div id="controls">
+    <button onclick="bloccaColore()" data-title="Blocca sfondo">🎨</button>
+    <button onclick="riattivaColore()" data-title="Riattiva sfondo">🔄</button>
+    <button onclick="toggleDemo()" data-title="Mostra/Nascondi Demo">🎧</button>
+    <button onclick="toggleDarkMode()" data-title="Modalità Notte">🌙</button>
+  </div>
+
+  <section id="colorPicker">
+    <span onclick="setColor('#ff4d4d')">🔴</span>
+    <span onclick="setColor('#ffa64d')">🟠</span>
+    <span onclick="setColor('#cc66ff')">🟣</span>
+    <span onclick="setColor('#4da6ff')">🔵</span>
+    <span onclick="setColor('#66cc66')">🟢</span>
+  </section>
+
+  <button id="btnMe" onclick="toggleDescrizione()">Me</button>
+
+  <section id="descrizione-it" class="hidden"><h2>Chi sono</h2><p>Vincenzo è un artista digitale con l’anima di un compositore e la mente di un visionario...</p></section>
+  <section id="descrizione-en" class="hidden"><h2>About Me</h2><p>Vincenzo is a digital artist with the soul of a composer and a visionary mind...</p></section>
+  <section id="descrizione-es" class="hidden"><h2>Sobre mí</h2><p>Vincenzo es un artista digital con alma de compositor y mente de visionario...</p></section>
+  <section id="descrizione-de" class="hidden"><h2>Über mich</h2><p>Vincenzo ist ein digitaler Künstler mit der Seele eines Komponisten und dem Geist eines Visionärs...</p></section>
+  <section id="descrizione-fr" class="hidden"><h2>À propos de moi</h2><p>Vincenzo est un artiste numérique avec l’âme d’un compositeur et l’esprit d’un visionnaire...</p></section>
+
+  <section id="demoContainer" class="hidden">
+    <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
+    <audio controls src="musica/Ali-di-fiducia.mp3"></audio>
+    <audio controls src="musica/Anima_di_Soul_e_Vita.mp3"></audio>
+    <audio controls src="musica/Boards_and_Moves.mp3"></audio>
+    <audio controls src="musica/Bomber-Sorriso-in-Loop.mp3"></audio>
+    <audio controls src="musica/celui-qui-a-donne-sans-rien-demander.mp3"></audio>
+    <audio controls src="musica/chi-ha-dato-senza-chiedere.mp3"></audio>
+    <audio controls src="musica/Codici_nta_u_sangu_4.mp3"></audio>
+    <audio controls src="musica/Colei-che-Dio-mi-ha-donato.mp3"></audio>
+    <audio controls src="musica/Cuando-nacimos-en-esa-tierra.mp3"></audio>
+    <audio controls src="musica/demo1.mp3"></audio>
+    <audio controls src="musica/demo2.mp3"></audio>
+    <audio controls src="musica/El-que.dio-sin-pedir.mp3"></audio>
+    <audio controls src="musica/Ela_Que_Deus_Me_Deu.mp3"></audio>
+    <audio controls src="musica/Elle-Que-Dieu-Ma-Donne.mp3"></audio>
+    <audio controls src="musica/Entre-Suenos-y-sombras.mp3"></audio>
+    <audio controls src="musica/Il-viso-che-Cambia.mp3"></audio>
+    <audio controls src="musica/La_Cara_que_Cambia.mp3"></audio>
+    <audio controls src="musica/Liens_qui_restent.mp3"></audio>
+    <audio controls src="musica/Maschere_e_Verita_4.mp3"></audio>
+    <audio controls src="musica/Nel_cuore_che_ama.mp3"></audio>
+    <audio controls src="musica/Perfectly_Made.mp3"></audio>
+    <audio controls src="musica/Quel_che_resta_da_salvare.mp3"></audio>
+    <audio controls src="musica/Quem-deu-sem-pedir.mp3"></audio>
+    <audio controls src="musica/Roots-and-New-Roads.mp3"></audio>
+    <audio controls src="musica/The_Heart_That_Loves.mp3"></audio>
+    <audio controls src="musica/The_One_Who_Gave_Without_Asking.mp3"></audio>
+    <audio controls src="musica/She-Who-Was-Sent-by-God.mp3"></audio>
+    <audio controls src="musica/Tra-Radici-e-Strade-Nuove.mp3"></audio>
+    <audio controls src="musica/Una-sola-voce.mp3"></audio>
+    <audio controls src="musica/We-Dont-Change-Masks.mp3"></audio>
+  </section>
+</main>
+
+<section id="contatti" class="hidden">
+  <h2>📨 Invia messaggio</h2>
+  <form>
+    <input type="text" placeholder="Il tuo nome"><br>
+    <textarea placeholder="Il tuo messaggio"></textarea><br>
+    <button type="submit">📨 Invia</button>
+  </form>
+</section>
+
+<footer>
+  <p id="footerName">Vincenzo Fanara</p>
+  <p>📧 vfanara@sunrise.ch | 📞 +41763430047</p>
+  <button onclick="toggleContatti()" style="margin-top:10px; padding:6px 12px; cursor:pointer; border:none; border-radius:5px; background:#4da6ff; color:white;">📬 Contattami</button>
+</footer>
+
+<script>
+// Saluto dinamico
+const greetings=[{text:"Ciao",color:"#ff4500"},{text:"Hello",color:"#1e90ff"},{text:"Hola",color:"#32cd32"},{text:"Hallo",color:"#ff1493"},{text:"Bonjour",color:"#8a2be2"}];
+let g=0; setInterval(()=>{
+  document.getElementById("ciao").textContent=greetings[g].text;
+  document.getElementById("ciao").style.color=greetings[g].color;
+  document.getElementById("nome").style.color=greetings[g].color;
+  g=(g+1)%greetings.length;
+},2000);
+
+// Toggle lingua
+function toggleLingue(){ document.getElementById("bandiere").classList.toggle("hidden"); }
+function switchLang(lang){
+  const descrizioni=['it','en','es','de','fr'];
+  descrizioni.forEach(l=>document.getElementById('descrizione-'+l).classList.add('hidden'));
+  document.getElementById('descrizione-'+lang).classList.remove('hidden');
+  document.querySelectorAll('#controls button').forEach(b=>{
+    const titles = {
+      it: ["Blocca sfondo","Riattiva sfondo","Mostra/Nascondi Demo","Modalità Notte"],
+      en: ["Lock Background","Reset Background","Toggle Demos","Night Mode"],
+      es: ["Bloquear Fondo","Reactivar Fondo","Mostrar/Ocultar Demo","Modo Noche"],
+      de: ["Hintergrund Sperren","Hintergrund Zurücksetzen","Demo Anzeigen/Verstecken","Nachtmodus"],
+      fr: ["Bloquer Fond","Réactiver Fond","Afficher/Masquer Demo","Mode Nuit"]
+    };
+    b.setAttribute('data-title', titles[lang][Array.from(b.parentNode.children).indexOf(b)]);
+  });
+  document.getElementById("bandiere").classList.add("hidden");
+}
+
+// Toggle sezioni
+function toggleDescrizione(){ document.getElementById("descrizione-it").classList.toggle('hidden'); }
+function toggleDemo(){ document.getElementById("demoContainer").classList.toggle('hidden'); }
+function toggleDarkMode(){ document.body.classList.toggle('dark-mode'); }
+function toggleContatti(){ document.getElementById("contatti").classList.toggle('hidden'); }
+
+// Playlist demo: un audio alla volta (esclude bgAudio)
+const audios=document.querySelectorAll("#demoContainer audio");
+audios.forEach(a=>{
+  a.addEventListener('play',()=>{
+    audios.forEach(o=>{ if(o!==a) o.pause(); });
+  });
+});
+
+// Orologio
+function updateClock(){
+  const now=new Date();
+  const d=String(now.getDate()).padStart(2,'0');
+  const m=String(now.getMonth()+1).padStart(2,'0');
+  const y=now.getFullYear();
+  const h=String(now.getHours()).padStart(2,'0');
+  const min=String(now.getMinutes()).padStart(2,'0');
+  const s=String(now.getSeconds()).padStart(2,'0');
+  document.getElementById("orologio").textContent=`${d}/${m}/${y} ${h}:${min}:${s}`;
+}
+setInterval(updateClock,1000);
+updateClock();
+
+// Colori rapidi
+function setColor(c){ document.body.style.background=c; }
+function bloccaColore(){ document.body.style.background=window.getComputedStyle(document.body).background; }
+function riattivaColore(){ document.body.style.background='linear-gradient(135deg,#ffecd2,#fcb69f,#a1c4fd,#c2e9fb)'; }
+
+// Sottofondo
+const bgAudio=document.getElementById('bgAudio');
+const bgBtn=document.getElementById('bgBtn');
+function toggleBgAudio(){
+  if(bgAudio.paused){ bgAudio.play().catch(()=>{console.log("Autoplay bloccato, clicca il pulsante.");}); bgBtn.textContent="🔊"; }
+  else{ bgAudio.pause(); bgBtn.textContent="🔈"; }
+}
+</script>
+
+</body>
+</html>
+
+
+
