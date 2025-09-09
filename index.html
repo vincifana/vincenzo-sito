@@ -124,11 +124,64 @@ footer a:hover{text-decoration:underline;}
 
   <button id="btnMe" onclick="toggleDescrizione()">Me</button>
 
-  <section id="descrizione-it" class="hidden"><h2>Chi sono</h2><p>Vincenzo è un artista digitale con l’anima di un compositore e la mente di un visionario...</p></section>
-  <section id="descrizione-en" class="hidden"><h2>About Me</h2><p>Vincenzo is a digital artist with the soul of a composer and a visionary mind...</p></section>
-  <section id="descrizione-es" class="hidden"><h2>Sobre mí</h2><p>Vincenzo es un artista digital con alma de compositor y mente de visionario...</p></section>
-  <section id="descrizione-de" class="hidden"><h2>Über mich</h2><p>Vincenzo ist ein digitaler Künstler mit der Seele eines Komponisten und dem Geist eines Visionärs...</p></section>
-  <section id="descrizione-fr" class="hidden"><h2>À propos de moi</h2><p>Vincenzo est un artiste numérique avec l’âme d’un compositeur et l’esprit d’un visionnaire...</p></section>
+  <section id="descrizione">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:20px;">
+    <!-- Immagini -->
+    <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" style="width:150px; height:auto; border-radius:10px;">
+    <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" style="width:150px; height:auto; border-radius:10px;">
+  </div>
+
+  <!-- Testi Multilingua -->
+  <div>
+    <div class="descrizione-lingua" id="descrizione-it">
+      <h2 style="margin-top:0; color:#e63946;">Chi sono</h2>
+      <p>Mi chiamo Vincenzo, sono il secondo di quattro figli e sono nato e cresciuto a Catanzaro. Da giovane le mie passioni erano il calcio, il ballo e, soprattutto, la musica. Già allora partecipavo ai karaoke, non per imparare, ma per puro divertimento.</p>
+      <p>Col passare degli anni, la mia vita è cambiata: ho avuto esperienze importanti, momenti di gioia e anche sfide da affrontare. Il tempo scorre inesorabile e ci ritroviamo a rivivere ricordi, passioni, amori e delusioni… e con cosa lo facciamo? Con la musica, naturalmente. La musica è un’arma potente che può emozionare chiunque.</p>
+      <p>Scrivo testi e preparo la base creativa della canzone, poi il computer aiuta a completarla. Così puoi dedicare una canzone, una poesia o un pensiero a chi vuoi, rendendolo un regalo unico e personale.</p>
+      <p>Ho anche il privilegio di vedere crescere i miei figli e di condividere momenti speciali con le persone a me care. Sopra a tutti, c’è mia mamma Teresa: perché di mamme ce n’è una sola. Questi legami mi hanno formato e continuano a ispirarmi, sia nella vita che nella musica.</p>
+      <p>Vi auguro buon divertimento e, se volete saperne di più, potete <a href="mailto:vfanara@sunrise.ch">contattarmi</a>. Vi auguro una splendida giornata.<br><strong>Vincenzo</strong></p>
+    </div>
+
+    <div class="descrizione-lingua hidden" id="descrizione-en">
+      <h2 style="margin-top:0; color:#e63946;">About Me</h2>
+      <p>My name is Vincenzo, I am the second of four children, born and raised in Catanzaro. When I was young, my passions were soccer, dance, and above all, music. I used to join karaoke, not to learn, but just for fun.</p>
+      <p>Over the years, my life changed: I had important experiences, moments of joy, and challenges to face. Time passes relentlessly, and we relive memories, passions, loves, and disappointments… and with what? With music, of course. Music is a powerful tool that can move anyone.</p>
+      <p>I write lyrics and prepare the creative foundation of the song, then the computer helps to complete it. This way, you can dedicate a song, a poem, or a thought to anyone you wish, making it a unique and personal gift.</p>
+      <p>I also have the privilege of watching my children grow and sharing special moments with those I care about. Above all, there is my mother Teresa: because there is only one mother. These bonds have shaped me and continue to inspire me, both in life and music.</p>
+      <p>I wish you great fun and, if you want to know more, you can <a href="mailto:vfanara@sunrise.ch">contact me</a>. Have a wonderful day.<br><strong>Vincenzo</strong></p>
+    </div>
+
+    <div class="descrizione-lingua hidden" id="descrizione-es">
+      <h2 style="margin-top:0; color:#e63946;">Sobre mí</h2>
+      <p>Me llamo Vincenzo, soy el segundo de cuatro hijos y nací y crecí en Catanzaro. De joven, mis pasiones eran el fútbol, el baile y, sobre todo, la música. Participaba en karaokes, no para aprender, sino por diversión.</p>
+      <p>Con los años, mi vida cambió: tuve experiencias importantes, momentos de alegría y también desafíos que enfrentar. El tiempo pasa inexorablemente y revivimos recuerdos, pasiones, amores y decepciones… ¿y con qué lo hacemos? Con música, por supuesto. La música es un arma poderosa que puede emocionar a cualquiera.</p>
+      <p>Escribo letras y preparo la base creativa de la canción, luego el ordenador ayuda a completarla. Así puedes dedicar una canción, un poema o un pensamiento a quien quieras, haciéndolo un regalo único y personal.</p>
+      <p>También tengo el privilegio de ver crecer a mis hijos y compartir momentos especiales con las personas que me importan. Sobre todo, está mi madre Teresa: porque solo hay una madre. Estos lazos me han formado y continúan inspirándome, tanto en la vida como en la música.</p>
+      <p>Les deseo mucha diversión y, si quieren saber más, pueden <a href="mailto:vfanara@sunrise.ch">contactarme</a>. Que tengan un día maravilloso.<br><strong>Vincenzo</strong></p>
+    </div>
+
+    <div class="descrizione-lingua hidden" id="descrizione-de">
+      <h2 style="margin-top:0; color:#e63946;">Über mich</h2>
+      <p>Mein Name ist Vincenzo, ich bin der zweite von vier Kindern und wurde in Catanzaro geboren und bin dort aufgewachsen. Als Jugendlicher waren meine Leidenschaften Fussball, Tanz und vor allem Musik. Ich nahm an Karaoke teil, nicht um zu lernen, sondern einfach aus Freude.</p>
+      <p>Im Laufe der Jahre änderte sich mein Leben: Ich hatte wichtige Erfahrungen, glückliche Momente und Herausforderungen zu meistern. Die Zeit vergeht unerbittlich, und wir erleben Erinnerungen, Leidenschaften, Liebe und Enttäuschungen erneut… und womit? Mit Musik, natürlich. Musik ist ein mächtiges Werkzeug, das jeden berühren kann.</p>
+      <p>Ich schreibe Texte und bereite die kreative Grundlage des Liedes vor, dann hilft der Computer, es zu vervollständigen. So kannst du ein Lied, ein Gedicht oder einen Gedanken widmen, und es wird zu einem einzigartigen und persönlichen Geschenk.</p>
+      <p>Ich habe auch das Privileg, meine Kinder aufwachsen zu sehen und besondere Momente mit den Menschen zu teilen, die mir wichtig sind. Vor allem meine Mutter Teresa: Denn eine Mutter gibt es nur einmal. Diese Bindungen haben mich geprägt und inspirieren mich weiterhin, sowohl im Leben als auch in der Musik.</p>
+      <p>Ich wünsche Ihnen viel Spaß und, wenn Sie mehr erfahren möchten, können Sie mich <a href="mailto:vfanara@sunrise.ch">kontaktieren</a>. Ich wünsche Ihnen einen wunderbaren Tag.<br><strong>Vincenzo</strong></p>
+    </div>
+
+    <div class="descrizione-lingua hidden" id="descrizione-fr">
+      <h2 style="margin-top:0; color:#e63946;">À propos de moi</h2>
+      <p>Je m’appelle Vincenzo, je suis le deuxième de quatre enfants et je suis né et j’ai grandi à Catanzaro. Quand j’étais jeune, mes passions étaient le football, la danse et surtout la musique. Je participais aux karaokés, non pas pour apprendre, mais juste pour le plaisir.</p>
+      <p>Au fil des années, ma vie a changé : j’ai vécu des expériences importantes, des moments de joie et aussi des défis à relever. Le temps passe inexorablement et nous revivons des souvenirs, passions, amours et déceptions… et avec quoi ? Avec la musique, bien sûr. La musique est une arme puissante qui peut émouvoir quiconque.</p>
+      <p>J’écris les textes et prépare la base créative de la chanson, puis l’ordinateur aide à la compléter. Ainsi, vous pouvez dédier une chanson, un poème ou une pensée à qui vous voulez, en faisant un cadeau unique et personnel.</p>
+      <p>J’ai également le privilège de voir grandir mes enfants et de partager des moments spéciaux avec mes proches. Et surtout, ma mère Teresa : car il n’y a qu’une seule mère. Ces liens m’ont façonné et continuent de m’inspirer, dans la vie comme dans la musique.</p>
+      <p>Je vous souhaite beaucoup de plaisir et, si vous souhaitez en savoir plus, vous pouvez <a href="mailto:vfanara@sunrise.ch">me contacter</a>. Passez une merveilleuse journée.<br><strong>Vincenzo</strong></p>
+    </div>
+  </div>
+</section>
+
+
+
 
   <section id="demoContainer" class="hidden">
   <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
