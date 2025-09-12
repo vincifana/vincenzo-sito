@@ -170,13 +170,33 @@ footer a:hover{text-decoration:underline;}
   </div>
 
   <!-- Pulsante Me -->
-  <button id="btnMe">Me</button>
+<button id="btnMe">Me</button>
 
-  <!-- Immagini -->
-  <div id="foto-container">
-    <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" class="foto">
-    <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" class="foto">
-  </div>
+<!-- Immagini -->
+<div id="foto-container">
+  <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" class="foto">
+  <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" class="foto">
+</div>
+
+<style>
+  #foto-container {
+    display: flex;
+    justify-content: center;   /* centra orizzontalmente */
+    align-items: center;       /* centra verticalmente */
+    gap: 20px;                 /* spazio tra le immagini */
+    margin-top: 100px;         /* abbassa tutto il blocco */
+  }
+
+  .foto {
+    max-width: 250px;          /* ridimensiona se troppo grandi */
+    height: auto;
+    border-radius: 12px;       /* angoli arrotondati */
+  }
+</style>
+
+
+
+
 
   <!-- Descrizione -->
 <section id="descrizione" style="display:none; max-width:900px; margin:20px auto; text-align:center;">
@@ -357,8 +377,14 @@ document.querySelectorAll("#demoContainer audio").forEach(a=>{
 });
 </script>
 
+<!-- Footer -->
+<footer style="text-align:center; margin-top:60px; padding:20px; font-size:0.9rem; color:#555;">
+  © 2025 Vincenzo – All Rights Reserved
+</footer>
+
 </body>
 </html>
+
 
 
 
