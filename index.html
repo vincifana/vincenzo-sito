@@ -25,31 +25,31 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 @keyframes gradientShift {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
+
 header, main, footer, section { transition: all 0.3s ease; }
 header { padding:20px; text-align:center; background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px);}
 h1{ margin:0; }
 #orologio{ font-size:1.2em; margin:10px 0; }
-#lingue{ margin-top:10px; text-align:center; }
-#bandiere span{ cursor:pointer; font-size:1.5em; margin:0 4px; }
+#bandiere{ margin-top:10px; text-align:center; display:flex; justify-content:center; gap:8px; }
+#bandiere span{ cursor:pointer; font-size:1.5rem; }
 main{ flex:1; display:flex; flex-direction: column; justify-content:flex-start; align-items:center; width:100%; }
 section{ padding:40px 20px; max-width:1000px; margin:auto; text-align:center; }
 .hidden{ display:none; }
 audio{ width:100%; margin-bottom:20px; }
 #btnMe{ display:block; margin:20px auto; padding:8px 16px; cursor:pointer; background:#4da6ff; color:white; border:none; border-radius:5px; }
-#foto-container { display:flex; justify-content:center; gap:20px; margin-bottom:20px; transition: all 0.5s ease; }
-.foto { width:200px; border-radius:10px; transition: transform 0.5s ease; }
-#descrizione { max-width:900px; margin:0 auto; }
+#foto-container { display:flex; justify-content:center; gap:20px; margin-bottom:20px; transition: all 0.5s ease; margin-top:100px; }
+.foto { width:200px; border-radius:12px; transition: transform 0.5s ease; }
+#descrizione { max-width:900px; margin:0 auto; display:none; }
 footer{text-align:center; margin-top:20px; font-size:0.9em; color:#666; padding:20px;}
 footer a{ color:#666; text-decoration:none; margin:0 5px;}
 footer a:hover{text-decoration:underline;}
-.dark-mode{ background:#111 !important; color:#eee !important; }
-.dark-mode header, .dark-mode footer, .dark-mode section, .dark-mode main{ background:#222 !important; color:#eee !important; }
-.dark-mode a{ color:#4da6ff !important; }
+
 @media (max-width: 600px) { 
   header h1 { font-size: 1.8rem; } 
   #controls { gap: 6px; } 
@@ -66,8 +66,8 @@ footer a:hover{text-decoration:underline;}
   height: 45px;
   padding: 8px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.6); /* bordo leggero bianco */
-  background: rgba(255,255,255,0.1);        /* quasi trasparente */
+  border: 2px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.1);
   color: #222;
   cursor: pointer;
   position: relative;
@@ -79,22 +79,20 @@ footer a:hover{text-decoration:underline;}
   transition: transform 0.2s, background 0.2s, color 0.2s, border 0.2s;
 }
 
-/* Hover leggero */
 #controls button:hover,
 #controls a:hover,
 #controls button.touch-tooltip,
 #controls a.touch-tooltip {
   transform: scale(1.1);
-  background: rgba(255,255,255,0.25);  /* leggero aumento visibilità */
+  background: rgba(255,255,255,0.25);
   border-color: rgba(255,255,255,0.8);
 }
 
-/* Tooltip */
 #controls button:hover::after,
 #controls button.touch-tooltip::after,
 #controls a:hover::after,
 #controls a.touch-tooltip::after {
-  content: attr(data-title) attr(title);
+  content: attr(data-title);
   position: absolute;
   bottom: 120%;
   left: 50%;
@@ -109,7 +107,6 @@ footer a:hover{text-decoration:underline;}
   opacity: 0.95;
 }
 
-/* Triangolino del tooltip */
 #controls button:hover::before,
 #controls button.touch-tooltip::before,
 #controls a:hover::before,
@@ -124,7 +121,7 @@ footer a:hover{text-decoration:underline;}
   border-color: #e63946 transparent transparent transparent;
 }
 
-/* Colori icone speciali */
+/* Pulsanti principali colorati */
 #controls button[title="Sostieni"],
 #controls a[title="Sostieni"] { color: #e63946; }
 #controls button[title="Contattami"],
@@ -132,22 +129,72 @@ footer a:hover{text-decoration:underline;}
 #controls button[title="WhatsApp"],
 #controls a[title="WhatsApp"] { color: #25D366; }
 
+/* Dark Mode corretto */
+.dark-mode {
+    background: linear-gradient(135deg,#111,#222,#333,#111);
+    background-size:400% 400%;
+    animation: gradientShift 20s ease infinite;
+    color: #eee;
+}
+
+.dark-mode header,
+.dark-mode footer {
+    background-color: rgba(0,0,0,0.4);
+    color: #eee;
+    backdrop-filter: blur(10px);
+}
+
+.dark-mode main,
+.dark-mode section {
+    background-color: transparent;
+    color: #eee;
+}
+
+/* Link nella descrizione */
+#descrizione a {
+    color: #e63946;  /* rosso vivo per visibilità */
+    text-decoration: underline;
+}
+
+/* Link nella descrizione in Dark Mode */
+.dark-mode #descrizione a {
+    color: #ff6f61; /* rosso chiaro/arancio, visibile sullo sfondo scuro */
+}
+
+}
+
+.dark-mode #controls button,
+.dark-mode #controls a {
+    background-color: rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.3);
+    color: #fff;
+}
+
+.dark-mode #controls button:hover,
+.dark-mode #controls a:hover {
+    background-color: rgba(255,255,255,0.15);
+}
 </style>
+
 </head>
 <body>
 
+  
 <header>
   <h1><span id="ciao">Ciao</span> da <span id="nome">Vincenzo</span></h1>
-  <div id="orologio"></div>
-  <div id="lingue">
-    <button onclick="toggleLingue()" title="Seleziona lingua">🌐</button>
-    <div id="bandiere" class="hidden">
-      <span onclick="switchLang('it')">🇮🇹</span>
-      <span onclick="switchLang('en')">🇬🇧</span>
-      <span onclick="switchLang('es')">🇪🇸</span>
-      <span onclick="switchLang('de')">🇩🇪</span>
-      <span onclick="switchLang('fr')">🇫🇷</span>
-    </div>
+
+  <div style="display:flex; justify-content:center; gap:10px; margin-top:5px;">
+    <div id="data"></div>
+    <div id="orologio"></div>
+  </div>
+
+  <!-- Bandiere direttamente visibili -->
+  <div id="bandiere">
+    <span onclick="switchLang('it')">🇮🇹</span>
+    <span onclick="switchLang('en')">🇬🇧</span>
+    <span onclick="switchLang('es')">🇪🇸</span>
+    <span onclick="switchLang('de')">🇩🇪</span>
+    <span onclick="switchLang('fr')">🇫🇷</span>
   </div>
 </header>
 
@@ -170,40 +217,19 @@ footer a:hover{text-decoration:underline;}
   </div>
 
   <!-- Pulsante Me -->
-<button id="btnMe">Me</button>
+  <button id="btnMe">Me</button>
 
-<!-- Immagini -->
-<div id="foto-container">
-  <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" class="foto">
-  <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" class="foto">
-</div>
+  <!-- Immagini -->
+  <div id="foto-container">
+    <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" class="foto">
+    <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" class="foto">
+  </div>
 
-<style>
-  #foto-container {
-    display: flex;
-    justify-content: center;   /* centra orizzontalmente */
-    align-items: center;       /* centra verticalmente */
-    gap: 20px;                 /* spazio tra le immagini */
-    margin-top: 100px;         /* abbassa tutto il blocco */
-  }
-
-  .foto {
-    max-width: 250px;          /* ridimensiona se troppo grandi */
-    height: auto;
-    border-radius: 12px;       /* angoli arrotondati */
-  }
-</style>
-
-
-
-
-
-  <!-- Descrizione -->
-<section id="descrizione" style="display:none; max-width:900px; margin:20px auto; text-align:center;">
-
+  <!-- Descrizioni multilingua -->
+<section id="descrizione" class="hidden">
   <!-- Italiano -->
   <div class="descrizione-lingua" id="descrizione-it">
-    <h2 style="margin-top:0; color:#e63946;">Chi sono</h2>
+    <h2>Chi sono</h2>
     <p>Mi chiamo Vincenzo, e la mia vita è una melodia fatta di emozioni, esperienze e legami profondi. Nato a Catanzaro, nella mia amata Calabria, terra di sole e passione, e nell’adorata Italia, ho imparato presto che la musica non è solo suono: è memoria, è cuore, è voce dell’anima.</p>
     <p>Da ragazzo mi perdevo tra un pallone, un passo di danza e un microfono da karaoke. Non cercavo la perfezione, ma la gioia di condividere, il piacere di stare tra amici che vivevano — e continuano a vivere — la musica con amore e passione. Quella gioia è diventata la mia strada.</p>
     <p>Oggi scrivo soprattutto testi e, servendomi della tecnologia, creo basi musicali e trasformo pensieri in canzoni. Ogni nota che compongo è un frammento di vita, un regalo che puoi dedicare a chi ami. Perché la musica, quando nasce dal cuore, diventa non solo poesia, ma qualcosa di personale che rimane nel tempo.</p>
@@ -213,7 +239,7 @@ footer a:hover{text-decoration:underline;}
 
   <!-- Inglese -->
   <div class="descrizione-lingua hidden" id="descrizione-en">
-    <h2 style="margin-top:0; color:#e63946;">About Me</h2>
+    <h2>About Me</h2>
     <p>My name is Vincenzo, and my life is a melody made of emotions, experiences, and deep bonds. Born in Catanzaro, in my beloved Calabria, land of sun and passion, and in beloved Italy, I soon learned that music is not just sound: it is memory, heart, and the voice of the soul.</p>
     <p>As a boy, I lost myself between a football, a dance step, and a karaoke microphone. I was not looking for perfection, but the joy of sharing, the pleasure of being among friends who lived — and still live — music with love and passion. That joy became my path.</p>
     <p>Today I mainly write lyrics and, using technology, I create musical bases and turn thoughts into songs. Every note I compose is a fragment of life, a gift you can dedicate to those you love. Because music, when it comes from the heart, becomes not only poetry, but something personal that remains over time.</p>
@@ -223,7 +249,7 @@ footer a:hover{text-decoration:underline;}
 
   <!-- Spagnolo -->
   <div class="descrizione-lingua hidden" id="descrizione-es">
-    <h2 style="margin-top:0; color:#e63946;">Quién soy</h2>
+    <h2>Quién soy</h2>
     <p>Me llamo Vincenzo, y mi vida es una melodía hecha de emociones, experiencias y lazos profundos. Nací en Catanzaro, en mi querida Calabria, tierra de sol y pasión, y en la adorada Italia, aprendí pronto que la música no es solo sonido: es memoria, es corazón, es la voz del alma.</p>
     <p>De niño me perdía entre un balón, un paso de baile y un micrófono de karaoke. No buscaba la perfección, sino la alegría de compartir, el placer de estar entre amigos que vivían —y siguen viviendo— la música con amor y pasión. Esa alegría se convirtió en mi camino.</p>
     <p>Hoy escribo sobre todo letras y, usando la tecnología, creo bases musicales y transformo pensamientos en canciones. Cada nota que compongo es un fragmento de vida, un regalo que puedes dedicar a quien amas. Porque la música, cuando nace del corazón, se convierte no solo en poesía, sino en algo personal que permanece en el tiempo.</p>
@@ -233,7 +259,7 @@ footer a:hover{text-decoration:underline;}
 
   <!-- Tedesco -->
   <div class="descrizione-lingua hidden" id="descrizione-de">
-    <h2 style="margin-top:0; color:#e63946;">Wer ich bin</h2>
+    <h2>Wer ich bin</h2>
     <p>Ich heiße Vincenzo, und mein Leben ist eine Melodie aus Emotionen, Erfahrungen und tiefen Bindungen. Geboren in Catanzaro, in meinem geliebten Kalabrien, Land der Sonne und Leidenschaft, und im geliebten Italien, habe ich früh gelernt, dass Musik nicht nur Klang ist: Sie ist Erinnerung, Herz und Stimme der Seele.</p>
     <p>Als Junge verlor ich mich zwischen einem Ball, einem Tanzschritt und einem Karaoke-Mikrofon. Ich suchte nicht nach Perfektion, sondern nach der Freude am Teilen, dem Vergnügen, unter Freunden zu sein, die Musik mit Liebe und Leidenschaft lebten — und immer noch leben. Diese Freude wurde mein Weg.</p>
     <p>Heute schreibe ich vor allem Texte und kreiere mit Hilfe der Technik Musikgrundlagen und verwandle Gedanken in Lieder. Jede Note, die ich komponiere, ist ein Stück Leben, ein Geschenk, das du denen widmen kannst, die du liebst. Denn Musik, wenn sie aus dem Herzen kommt, wird nicht nur Poesie, sondern etwas Persönliches, das bleibt.</p>
@@ -243,56 +269,54 @@ footer a:hover{text-decoration:underline;}
 
   <!-- Francese -->
   <div class="descrizione-lingua hidden" id="descrizione-fr">
-    <h2 style="margin-top:0; color:#e63946;">Qui suis-je</h2>
+    <h2>Qui suis-je</h2>
     <p>Je m'appelle Vincenzo, et ma vie est une mélodie faite d'émotions, d'expériences et de liens profonds. Né à Catanzaro, dans ma chère Calabre, terre de soleil et de passion, et dans l'Italie adorée, j'ai vite appris que la musique n'est pas seulement un son : c'est la mémoire, le cœur, la voix de l'âme.</p>
     <p>Enfant, je me perdais entre un ballon, un pas de danse et un micro de karaoké. Je ne cherchais pas la perfection, mais la joie de partager, le plaisir d'être parmi des amis qui vivaient — et vivent encore — la musique avec amour et passion. Cette joie est devenue mon chemin.</p>
     <p>Aujourd'hui, j'écris surtout des textes et, grâce à la technologie, je crée des bases musicales et transforme des pensées en chansons. Chaque note que je compose est un fragment de vie, un cadeau que tu peux offrir à ceux que tu aimes. Parce que la musique, lorsqu'elle naît du cœur, devient non seulement de la poésie, mais quelque chose de personnel qui reste dans le temps.</p>
     <p>Ma plus grande inspiration ? Ma famille. Mes enfants, qui grandissent sous mes yeux, et ma mère Teresa, mon point d'ancrage. Les moments vécus avec eux sont ma sève, et chaque mot que j'écris porte un peu d'eux en lui.</p>
-    <p>Si tu es ici, je te souhaite de t'émouvoir, de sourire et peut-être de trouver une chanson qui parle aussi de toi. Et si tu veux créer quelque chose d'unique, <a href="mailto:vfanara@sunrise.ch">écris-moi</a>. Ce sera un plaisir de te connaître.<br><strong>Vincenzo</strong></p>
+    <p>Si tu es ici, je te souhaite de t'émouvoir, de sourire et peut-être de trouver une chanson qui parle aussi de toi. Et si tu veux créer quelque chose d'unique, <a href="mailto:vfanara@sunrise.ch">écris-moi</a>.<br><strong>Vincenzo</strong></p>
   </div>
-
 </section>
 
 
 
   <!-- Demo musicali -->
-<section id="demoContainer" class="hidden">
-  <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
-  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:16px;">
-    <div><p>Ali di fiducia</p><audio controls src="musica/Ali-di-fiducia.mp3"></audio></div>
-    <div><p>Anima di Soul e Vita</p><audio controls src="musica/Anima_di_Soul_e_Vita.mp3"></audio></div>
-    <div><p>Boards and Moves</p><audio controls src="musica/Boards_and_Moves.mp3"></audio></div>
-    <div><p>Bomber Sorriso in Loop</p><audio controls src="musica/Bomber-Sorriso-in-Loop.mp3"></audio></div>
-    <div><p>Celui qui a donné sans rien demander</p><audio controls src="musica/celui-qui-a-donne-sans-rien-demander.mp3"></audio></div>
-    <div><p>Chi ha dato senza chiedere</p><audio controls src="musica/chi-ha-dato-senza-chiedere.mp3"></audio></div>
-    <div><p>Codici nta u sangu 4</p><audio controls src="musica/Codici_nta_u_sangu_4.mp3"></audio></div>
-    <div><p>Colei che Dio mi ha donato</p><audio controls src="musica/Colei-che-Dio-mi-ha-donato.mp3"></audio></div>
-    <div><p>Cuando nacimos en esa tierra</p><audio controls src="musica/Cuando-nacimos-en-esa-tierra.mp3"></audio></div>
-    <div><p>Demo 1</p><audio controls src="musica/demo1.mp3"></audio></div>
-    <div><p>Demo 2</p><audio controls src="musica/demo2.mp3"></audio></div>
-    <div><p>El que dio sin pedir</p><audio controls src="musica/El-que-dio-sin-pedir.mp3"></audio></div>
-    <div><p>Ela Que Deus Me Deu</p><audio controls src="musica/Ela_Que_Deus_Me_Deu.mp3"></audio></div>
-    <div><p>Elle Que Dieu M’a Donné</p><audio controls src="musica/Elle-Que-Dieu-Ma-Donne.mp3"></audio></div>
-    <div><p>Entre Sueños y sombras</p><audio controls src="musica/Entre-Suenos-y-sombras.mp3"></audio></div>
-    <div><p>Il viso che Cambia</p><audio controls src="musica/Il-viso-che-Cambia.mp3"></audio></div>
-    <div><p>La Cara que Cambia</p><audio controls src="musica/La_Cara_que_Cambia.mp3"></audio></div>
-    <div><p>Liens qui restent</p><audio controls src="musica/Liens_qui_restent.mp3"></audio></div>
-    <div><p>Maschere e Verità 4</p><audio controls src="musica/Maschere_e_Verita_4.mp3"></audio></div>
-    <div><p>Nel cuore che ama</p><audio controls src="musica/Nel_cuore_che_ama.mp3"></audio></div>
-    <div><p>Perfectly Made</p><audio controls src="musica/Perfectly_Made.mp3"></audio></div>
-    <div><p>Quel che resta da salvare</p><audio controls src="musica/Quel_che_resta_da_salvare.mp3"></audio></div>
-    <div><p>Quem deu sem pedir</p><audio controls src="musica/Quem-deu-sem-pedir.mp3"></audio></div>
-    <div><p>Roots and New Roads</p><audio controls src="musica/Roots-and-New-Roads.mp3"></audio></div>
-    <div><p>The Heart That Loves</p><audio controls src="musica/The_Heart_That_Loves.mp3"></audio></div>
-    <div><p>The One Who Gave Without Asking</p><audio controls src="musica/The_One_Who_Gave_Without_Asking.mp3"></audio></div>
-    <div><p>She Who Was Sent by God</p><audio controls src="musica/She-Who-Was-Sent-by-God.mp3"></audio></div>
-    <div><p>Tra Radici e Strade Nuove</p><audio controls src="musica/Tra-Radici-e-Strade-Nuove.mp3"></audio></div>
-    <div><p>Una sola voce</p><audio controls src="musica/Una-sola-voce.mp3"></audio></div>
-    <div><p>We Don’t Change Masks</p><audio controls src="musica/We-Dont-Change-Masks.mp3"></audio></div>
-  </div>
-</section>
+  <section id="demoContainer" class="hidden">
+    <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:16px;">
+  <div><p>Ali di fiducia</p><audio controls src="musica/Ali-di-fiducia.mp3"></audio></div>
+  <div><p>Anima di Soul e Vita</p><audio controls src="musica/Anima_di_Soul_e_Vita.mp3"></audio></div>
+  <div><p>Boards and Moves</p><audio controls src="musica/Boards_and_Moves.mp3"></audio></div>
+  <div><p>Bomber Sorriso in Loop</p><audio controls src="musica/Bomber-Sorriso-in-Loop.mp3"></audio></div>
+  <div><p>Celui qui a donné sans rien demander</p><audio controls src="musica/celui-qui-a-donne-sans-rien-demander.mp3"></audio></div>
+  <div><p>Chi ha dato senza chiedere</p><audio controls src="musica/chi-ha-dato-senza-chiedere.mp3"></audio></div>
+  <div><p>Codici nta u sangu 4</p><audio controls src="musica/Codici_nta_u_sangu_4.mp3"></audio></div>
+  <div><p>Colei che Dio mi ha donato</p><audio controls src="musica/Colei-che-Dio-mi-ha-donato.mp3"></audio></div>
+  <div><p>Cuando nacimos en esa tierra</p><audio controls src="musica/Cuando-nacimos-en-esa-tierra.mp3"></audio></div>
+  <div><p>Demo 1</p><audio controls src="musica/demo1.mp3"></audio></div>
+  <div><p>Demo 2</p><audio controls src="musica/demo2.mp3"></audio></div>
+  <div><p>El que dio sin pedir</p><audio controls src="musica/El-que-dio-sin-pedir.mp3"></audio></div>
+  <div><p>Ela Que Deus Me Deu</p><audio controls src="musica/Ela_Que_Deus_Me_Deu.mp3"></audio></div>
+  <div><p>Elle Que Dieu M’a Donné</p><audio controls src="musica/Elle-Que-Dieu-Ma-Donne.mp3"></audio></div>
+  <div><p>Entre Sueños y sombras</p><audio controls src="musica/Entre-Suenos-y-sombras.mp3"></audio></div>
+  <div><p>Il viso che Cambia</p><audio controls src="musica/Il-viso-che-Cambia.mp3"></audio></div>
+  <div><p>La Cara que Cambia</p><audio controls src="musica/La_Cara_que_Cambia.mp3"></audio></div>
+  <div><p>Liens qui restent</p><audio controls src="musica/Liens_qui_restent.mp3"></audio></div>
+  <div><p>Maschere e Verità 4</p><audio controls src="musica/Maschere_e_Verita_4.mp3"></audio></div>
+  <div><p>Nel cuore che ama</p><audio controls src="musica/Nel_cuore_che_ama.mp3"></audio></div>
+  <div><p>Perfectly Made</p><audio controls src="musica/Perfectly_Made.mp3"></audio></div>
+  <div><p>Quel che resta da salvare</p><audio controls src="musica/Quel_che_resta_da_salvare.mp3"></audio></div>
+  <div><p>Quem deu sem pedir</p><audio controls src="musica/Quem-deu-sem-pedir.mp3"></audio></div>
+  <div><p>Roots and New Roads</p><audio controls src="musica/Roots-and-New-Roads.mp3"></audio></div>
+  <div><p>The Heart That Loves</p><audio controls src="musica/The_Heart_That_Loves.mp3"></audio></div>
+  <div><p>The One Who Gave Without Asking</p><audio controls src="musica/The_One_Who_Gave_Without_Asking.mp3"></audio></div>
+  <div><p>She Who Was Sent by God</p><audio controls src="musica/She-Who-Was-Sent-by-God.mp3"></audio></div>
+  <div><p>Tra Radici e Strade Nuove</p><audio controls src="musica/Tra-Radici-e-Strade-Nuove.mp3"></audio></div>
+  <div><p>Una sola voce</p><audio controls src="musica/Una-sola-voce.mp3"></audio></div>
+  <div><p>We Don’t Change Masks</p><audio controls src="musica/We-Dont-Change-Masks.mp3"></audio></div>
+</div>
 
-
+  </section>
 </main>
 
 <section id="funzioni" style="margin:20px auto; max-width:700px; text-align:center; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
@@ -313,7 +337,7 @@ document.querySelectorAll('.control-btn').forEach(btn => {
   });
 });
 
-// Toggle sezioni
+// Toggle descrizione foto
 document.getElementById("btnMe").addEventListener("click", function(){
   const descrizione = document.getElementById("descrizione");
   const foto = document.querySelectorAll(".foto");
@@ -328,6 +352,7 @@ document.getElementById("btnMe").addEventListener("click", function(){
   }
 });
 
+// Toggle IBAN
 function toggleIBAN(){
   const box = document.getElementById("ibanBox");
   if(box.style.display==="none" || box.style.display===""){
@@ -338,14 +363,15 @@ function toggleIBAN(){
   }
 }
 
+// Toggle sezioni
 function toggleDemo(){ document.getElementById("demoContainer").classList.toggle("hidden"); }
 function toggleDarkMode(){ document.body.classList.toggle("dark-mode"); }
-function toggleLingue(){ document.getElementById("bandiere").classList.toggle("hidden"); }
+
+// Cambia lingua (solo descrizioni)
 function switchLang(lang){ 
   const descrizioni=['it','en','es','de','fr'];
   descrizioni.forEach(l=>document.getElementById('descrizione-'+l).classList.add('hidden'));
   document.getElementById('descrizione-'+lang).classList.remove('hidden');
-  document.getElementById("bandiere").classList.add("hidden");
 }
 
 // Orologio
@@ -361,7 +387,7 @@ function updateClock(){
 }
 setInterval(updateClock,1000); updateClock();
 
-// Sottofondo
+// Musica sottofondo
 const bgAudio=document.getElementById('bgAudio');
 const bgBtn=document.getElementById('bgBtn');
 function toggleBgAudio(){
@@ -377,13 +403,13 @@ document.querySelectorAll("#demoContainer audio").forEach(a=>{
 });
 </script>
 
-<!-- Footer -->
 <footer style="text-align:center; margin-top:60px; padding:20px; font-size:0.9rem; color:#555;">
   © 2025 Vincenzo – All Rights Reserved
 </footer>
 
 </body>
 </html>
+
 
 
 
