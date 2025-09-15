@@ -129,7 +129,7 @@ footer a:hover{text-decoration:underline;}
 #controls button[title="WhatsApp"],
 #controls a[title="WhatsApp"] { color: #25D366; }
 
-/* Dark Mode corretto */
+/* Dark Mode */
 .dark-mode {
     background: linear-gradient(135deg,#111,#222,#333,#111);
     background-size:400% 400%;
@@ -150,19 +150,6 @@ footer a:hover{text-decoration:underline;}
     color: #eee;
 }
 
-/* Link nella descrizione */
-#descrizione a {
-    color: #e63946;  /* rosso vivo per visibilità */
-    text-decoration: underline;
-}
-
-/* Link nella descrizione in Dark Mode */
-.dark-mode #descrizione a {
-    color: #ff6f61; /* rosso chiaro/arancio, visibile sullo sfondo scuro */
-}
-
-}
-
 .dark-mode #controls button,
 .dark-mode #controls a {
     background-color: rgba(0,0,0,0.4);
@@ -174,7 +161,18 @@ footer a:hover{text-decoration:underline;}
 .dark-mode #controls a:hover {
     background-color: rgba(255,255,255,0.15);
 }
+
+/* Link descrizione */
+#descrizione a {
+    color: #e63946;
+    text-decoration: underline;
+}
+
+.dark-mode #descrizione a {
+    color: #ff6f61;
+}
 </style>
+
 
 </head>
 <body>
@@ -200,8 +198,9 @@ footer a:hover{text-decoration:underline;}
 
 <!-- Pulsante piccolo per musica di sottofondo -->
 <button id="bgBtn" onclick="toggleBgAudio()" 
-        style="position:fixed;top:10px;right:10px;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;z-index:9999;">
-  🎵
+        style="position:fixed;top:10px;right:10px;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;z-index:9999;"
+        title="A mio figlio Eric">
+  ❤️
 </button>
 <audio id="bgAudio" src="musica/eric.mp3" loop></audio>
 
@@ -387,13 +386,19 @@ function updateClock(){
 }
 setInterval(updateClock,1000); updateClock();
 
-// Musica sottofondo
+// Musica sottofondo con cuore animato
 const bgAudio=document.getElementById('bgAudio');
 const bgBtn=document.getElementById('bgBtn');
 function toggleBgAudio(){
-  if(bgAudio.paused){ bgAudio.play().catch(()=>{console.log("Autoplay bloccato");}); bgBtn.textContent="🔊"; }
-  else{ bgAudio.pause(); bgBtn.textContent="🔈"; }
+  if(bgAudio.paused){
+    bgAudio.play().catch(()=>{console.log("Autoplay bloccato");}); 
+    bgBtn.textContent="💖"; // cuore pieno
+  } else {
+    bgAudio.pause(); 
+    bgBtn.textContent="❤️"; // cuore normale
+  }
 }
+
 
 // Playlist demo: un audio alla volta
 document.querySelectorAll("#demoContainer audio").forEach(a=>{
