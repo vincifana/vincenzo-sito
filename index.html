@@ -215,14 +215,44 @@ footer a:hover{text-decoration:underline;}
     <a class="control-btn" data-title="WhatsApp" href="https://wa.me/41763430047" target="_blank">💬</a>
   </div>
 
-  <!-- Pulsante Me -->
-  <button id="btnMe">Me</button>
 
-  <!-- Immagini -->
-  <div id="foto-container">
-    <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" class="foto">
-    <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" class="foto">
-  </div>
+  
+  <!-- Pulsante Me -->
+<button id="btnMe">Me</button>
+
+<!-- Immagini -->
+<div id="foto-container" style="display:flex; justify-content:center; align-items:center; gap:16px; position:relative;">
+  <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" class="foto">
+  <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" class="foto">
+  
+  <!-- Foto centrale nascosta -->
+  <img src="img/vincenzo-foto2.png" alt="Vincenzo Foto 2" id="fotoMe" class="foto" style="
+       display:none;
+       position:absolute;
+       top:50%;
+       left:50%;
+       transform:translate(-50%, -50%);
+       max-width:200px;
+       border-radius:8px;
+       z-index:10;
+       box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  ">
+</div>
+
+<script>
+const btnMe = document.getElementById('btnMe');
+const fotoMe = document.getElementById('fotoMe');
+
+btnMe.addEventListener('click', () => {
+  if(fotoMe.style.display === 'none') {
+    fotoMe.style.display = 'block';
+  } else {
+    fotoMe.style.display = 'none';
+  }
+});
+</script>
+
+
 
   <!-- Descrizioni multilingua -->
 <section id="descrizione" class="hidden">
@@ -280,42 +310,93 @@ footer a:hover{text-decoration:underline;}
 
 
   <!-- Demo musicali -->
-  <section id="demoContainer" class="hidden">
-    <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:16px;">
-  <div><p>Ali di fiducia</p><audio controls src="musica/Ali-di-fiducia.mp3"></audio></div>
-  <div><p>Anima di Soul e Vita</p><audio controls src="musica/Anima_di_Soul_e_Vita.mp3"></audio></div>
-  <div><p>Boards and Moves</p><audio controls src="musica/Boards_and_Moves.mp3"></audio></div>
-  <div><p>Bomber Sorriso in Loop</p><audio controls src="musica/Bomber-Sorriso-in-Loop.mp3"></audio></div>
-  <div><p>Celui qui a donné sans rien demander</p><audio controls src="musica/celui-qui-a-donne-sans-rien-demander.mp3"></audio></div>
-  <div><p>Chi ha dato senza chiedere</p><audio controls src="musica/chi-ha-dato-senza-chiedere.mp3"></audio></div>
-  <div><p>Codici nta u sangu 4</p><audio controls src="musica/Codici_nta_u_sangu_4.mp3"></audio></div>
-  <div><p>Colei che Dio mi ha donato</p><audio controls src="musica/Colei-che-Dio-mi-ha-donato.mp3"></audio></div>
-  <div><p>Cuando nacimos en esa tierra</p><audio controls src="musica/Cuando-nacimos-en-esa-tierra.mp3"></audio></div>
-  <div><p>Demo 1</p><audio controls src="musica/demo1.mp3"></audio></div>
-  <div><p>Demo 2</p><audio controls src="musica/demo2.mp3"></audio></div>
-  <div><p>El que dio sin pedir</p><audio controls src="musica/El-que-dio-sin-pedir.mp3"></audio></div>
-  <div><p>Ela Que Deus Me Deu</p><audio controls src="musica/Ela_Que_Deus_Me_Deu.mp3"></audio></div>
-  <div><p>Elle Que Dieu M’a Donné</p><audio controls src="musica/Elle-Que-Dieu-Ma-Donne.mp3"></audio></div>
-  <div><p>Entre Sueños y sombras</p><audio controls src="musica/Entre-Suenos-y-sombras.mp3"></audio></div>
-  <div><p>Il viso che Cambia</p><audio controls src="musica/Il-viso-che-Cambia.mp3"></audio></div>
-  <div><p>La Cara que Cambia</p><audio controls src="musica/La_Cara_que_Cambia.mp3"></audio></div>
-  <div><p>Liens qui restent</p><audio controls src="musica/Liens_qui_restent.mp3"></audio></div>
-  <div><p>Maschere e Verità 4</p><audio controls src="musica/Maschere_e_Verita_4.mp3"></audio></div>
-  <div><p>Nel cuore che ama</p><audio controls src="musica/Nel_cuore_che_ama.mp3"></audio></div>
-  <div><p>Perfectly Made</p><audio controls src="musica/Perfectly_Made.mp3"></audio></div>
-  <div><p>Quel che resta da salvare</p><audio controls src="musica/Quel_che_resta_da_salvare.mp3"></audio></div>
-  <div><p>Quem deu sem pedir</p><audio controls src="musica/Quem-deu-sem-pedir.mp3"></audio></div>
-  <div><p>Roots and New Roads</p><audio controls src="musica/Roots-and-New-Roads.mp3"></audio></div>
-  <div><p>The Heart That Loves</p><audio controls src="musica/The_Heart_That_Loves.mp3"></audio></div>
-  <div><p>The One Who Gave Without Asking</p><audio controls src="musica/The_One_Who_Gave_Without_Asking.mp3"></audio></div>
-  <div><p>She Who Was Sent by God</p><audio controls src="musica/She-Who-Was-Sent-by-God.mp3"></audio></div>
-  <div><p>Tra Radici e Strade Nuove</p><audio controls src="musica/Tra-Radici-e-Strade-Nuove.mp3"></audio></div>
-  <div><p>Una sola voce</p><audio controls src="musica/Una-sola-voce.mp3"></audio></div>
-  <div><p>We Don’t Change Masks</p><audio controls src="musica/We-Dont-Change-Masks.mp3"></audio></div>
-</div>
+<section id="demoContainer" class="hidden">
+  <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
+  <div class="demo-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:16px;">
 
-  </section>
+    <div class="demo-card"><p>Ali di fiducia</p><button data-src="musica/Ali-di-fiducia.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Anima di Soul e Vita</p><button data-src="musica/Anima_di_Soul_e_Vita.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Boards and Moves</p><button data-src="musica/Boards_and_Moves.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Bomber Sorriso in Loop</p><button data-src="musica/Bomber-Sorriso-in-Loop.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Celui qui a donné sans rien demander</p><button data-src="musica/celui-qui-a-donne-sans-rien-demander.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Chi ha dato senza chiedere</p><button data-src="musica/chi-ha-dato-senza-chiedere.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Codici nta u sangu 4</p><button data-src="musica/Codici_nta_u_sangu_4.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Colei che Dio mi ha donato</p><button data-src="musica/Colei-che-Dio-mi-ha-donato.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Cuando nacimos en esa tierra</p><button data-src="musica/Cuando-nacimos-en-esa-tierra.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Demo 1</p><button data-src="musica/demo1.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Demo 2</p><button data-src="musica/demo2.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>El que dio sin pedir</p><button data-src="musica/El-que-dio-sin-pedir.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Ela Que Deus Me Deu</p><button data-src="musica/Ela_Que_Deus_Me_Deu.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Elle Que Dieu M’a Donné</p><button data-src="musica/Elle-Que-Dieu-Ma-Donne.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Entre Sueños y sombras</p><button data-src="musica/Entre-Suenos-y-sombras.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Il viso che Cambia</p><button data-src="musica/Il-viso-che-Cambia.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>La Cara que Cambia</p><button data-src="musica/La_Cara_que_Cambia.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Liens qui restent</p><button data-src="musica/Liens_qui_restent.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Maschere e Verità 4</p><button data-src="musica/Maschere_e_Verita_4.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Nel cuore che ama</p><button data-src="musica/Nel_cuore_che_ama.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Perfectly Made</p><button data-src="musica/Perfectly_Made.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Quel che resta da salvare</p><button data-src="musica/Quel_che_resta_da_salvare.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Quem deu sem pedir</p><button data-src="musica/Quem-deu-sem-pedir.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Roots and New Roads</p><button data-src="musica/Roots-and-New-Roads.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>The Heart That Loves</p><button data-src="musica/The_Heart_That_Loves.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>The One Who Gave Without Asking</p><button data-src="musica/The_One_Who_Gave_Without_Asking.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>She Who Was Sent by God</p><button data-src="musica/She-Who-Was-Sent-by-God.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Tra Radici e Strade Nuove</p><button data-src="musica/Tra-Radici-e-Strade-Nuove.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>Una sola voce</p><button data-src="musica/Una-sola-voce.mp3">▶ Play</button></div>
+    <div class="demo-card"><p>We Don’t Change Masks</p><button data-src="musica/We-Dont-Change-Masks.mp3">▶ Play</button></div>
+
+  </div>
+</section>
+
+<script>
+let currentAudio = null;
+let currentButton = null;
+
+function stopCurrentAudio() {
+  if(currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  if(currentButton) {
+    currentButton.textContent = '▶ Play';
+    currentButton = null;
+  }
+}
+
+document.querySelectorAll('#demoContainer button').forEach(btn => {
+  btn.addEventListener('click', function() {
+
+    // Se clicchi lo stesso pulsante → toggle play/pause
+    if(currentButton === this) {
+      if(currentAudio.paused) {
+        currentAudio.play();
+        this.textContent = '⏸ Pause';
+      } else {
+        currentAudio.pause();
+        this.textContent = '▶ Play';
+      }
+      return;
+    }
+
+    // Stop audio precedente
+    stopCurrentAudio();
+
+    // Crea nuovo audio
+    currentAudio = new Audio(this.dataset.src);
+    currentButton = this;
+    currentAudio.play();
+    this.textContent = '⏸ Pause';
+
+    currentAudio.onended = () => {
+      stopCurrentAudio();
+    };
+  });
+});
+</script>
+
+
+
 </main>
 
 <section id="funzioni" style="margin:20px auto; max-width:700px; text-align:center; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
