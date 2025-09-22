@@ -1,500 +1,699 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ciao da Vincenzo</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVHCF1Z23E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ZVHCF1Z23E');
-</script>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Il sito musicale di Vincenzo</title>
 <style>
-body {
-  font-family: Arial, sans-serif;
-  margin:0; padding:0;
-  background: linear-gradient(135deg,#ffecd2,#fcb69f,#a1c4fd,#c2e9fb);
-  background-size:400% 400%;
-  animation: gradientShift 20s ease infinite;
-  color:#222;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-header, main, footer, section { transition: all 0.3s ease; }
-header { padding:20px; text-align:center; background-color: rgba(255,255,255,0.3); backdrop-filter: blur(10px);}
-h1{ margin:0; }
-#orologio{ font-size:1.2em; margin:10px 0; }
-#bandiere{ margin-top:10px; text-align:center; display:flex; justify-content:center; gap:8px; }
-#bandiere span{ cursor:pointer; font-size:1.5rem; }
-main{ flex:1; display:flex; flex-direction: column; justify-content:flex-start; align-items:center; width:100%; }
-section{ padding:40px 20px; max-width:1000px; margin:auto; text-align:center; }
-.hidden{ display:none; }
-audio{ width:100%; margin-bottom:20px; }
-#btnMe{ display:block; margin:20px auto; padding:8px 16px; cursor:pointer; background:#4da6ff; color:white; border:none; border-radius:5px; }
-#foto-container { display:flex; justify-content:center; gap:20px; margin-bottom:20px; transition: all 0.5s ease; margin-top:100px; }
-.foto { width:200px; border-radius:12px; transition: transform 0.5s ease; }
-#descrizione { max-width:900px; margin:0 auto; display:none; }
-footer{text-align:center; margin-top:20px; font-size:0.9em; color:#666; padding:20px;}
-footer a{ color:#666; text-decoration:none; margin:0 5px;}
-footer a:hover{text-decoration:underline;}
-
-@media (max-width: 600px) { 
-  header h1 { font-size: 1.8rem; } 
-  #controls { gap: 6px; } 
-  #controls button, #controls a { width: 40px; height: 40px; font-size: 1.2rem; } 
-  section { padding: 20px 10px; } 
-  #contatti { width: 90%; bottom: 20px; } 
-}
-
-/* Pulsanti principali con sfondo trasparente */
-#controls button,
-#controls a {
-  font-size: 20px;
-  width: 45px;
-  height: 45px;
-  padding: 8px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.1);
-  color: #222;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: transform 0.2s, background 0.2s, color 0.2s, border 0.2s;
-}
-
-#controls button:hover,
-#controls a:hover,
-#controls button.touch-tooltip,
-#controls a.touch-tooltip {
-  transform: scale(1.1);
-  background: rgba(255,255,255,0.25);
-  border-color: rgba(255,255,255,0.8);
-}
-
-#controls button:hover::after,
-#controls button.touch-tooltip::after,
-#controls a:hover::after,
-#controls a.touch-tooltip::after {
-  content: attr(data-title);
-  position: absolute;
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #e63946;
-  color: #fff;
-  padding: 3px 6px;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  white-space: nowrap;
-  z-index: 1000;
-  opacity: 0.95;
-}
-
-#controls button:hover::before,
-#controls button.touch-tooltip::before,
-#controls a:hover::before,
-#controls a.touch-tooltip::before {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: #e63946 transparent transparent transparent;
-}
-
-/* Pulsanti principali colorati */
-#controls button[title="Sostieni"],
-#controls a[title="Sostieni"] { color: #e63946; }
-#controls button[title="Contattami"],
-#controls a[title="Contattami"] { color: #1a73e8; }
-#controls button[title="WhatsApp"],
-#controls a[title="WhatsApp"] { color: #25D366; }
-
-/* Dark Mode */
-.dark-mode {
-    background: linear-gradient(135deg,#111,#222,#333,#111);
-    background-size:400% 400%;
-    animation: gradientShift 20s ease infinite;
+  /* Qui tutto il CSS completo incluso media query per responsività */
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ffecd2,#fcb69f,#a1c4fd,#c2e9fb);
+    margin: 0;
+    color: #111;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  body.dark-mode {
+    background: #121212;
     color: #eee;
-}
-
-.dark-mode header,
-.dark-mode footer {
-    background-color: rgba(0,0,0,0.4);
+  }
+  header {
+    position: relative;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 2px solid #cc4d4f;
+    user-select: none;
+    transition: border-color 0.3s ease;
+  }
+  body.dark-mode header {
+    border-color: #444;
+  }
+  #heart-button {
+    font-size: 2.8rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #d85b5d;
+    transition: color 0.3s ease;
+  }
+  body.dark-mode #heart-button {
+    color: #66ff99;
+  }
+  #heart-button.pulsing {
+    animation: pulse 1s infinite alternate;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1);}
+    100% { transform: scale(1.3);}
+  }
+  #scroll-container {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 20px;
+  }
+  #scroll-content {
+    display: inline-block;
+    animation: scroll-left 30s linear infinite;
+  }
+  #scroll-content span {
+    display: inline-block;
+    margin-right: 5rem;
+    font-size: 2rem;
+    color: #aa2e30;
+    font-weight: 600;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+  body.dark-mode #scroll-content span {
+    color: #99ffaa;
+  }
+  @keyframes scroll-left {
+    0% { transform: translateX(0);}
+    100% { transform: translateX(-50%);}
+  }
+  #date-time {
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #555;
+    min-width: 100px;
+    text-align: right;
+    transition: color 0.3s ease;
+  }
+  body.dark-mode #date-time {
+    color: #ccc;
+  }
+  #container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  #content {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 120px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    overflow-y: auto;
+    transition: color 0.3s ease, background 0.3s ease;
+  }
+  body.dark-mode #content {
+    background: #222;
     color: #eee;
-    backdrop-filter: blur(10px);
-}
-
-.dark-mode main,
-.dark-mode section {
-    background-color: transparent;
-    color: #eee;
-}
-
-.dark-mode #controls button,
-.dark-mode #controls a {
-    background-color: rgba(0,0,0,0.4);
-    border-color: rgba(255,255,255,0.3);
-    color: #fff;
-}
-
-.dark-mode #controls button:hover,
-.dark-mode #controls a:hover {
-    background-color: rgba(255,255,255,0.15);
-}
-
-/* Link descrizione */
-#descrizione a {
-    color: #e63946;
-    text-decoration: underline;
-}
-
-.dark-mode #descrizione a {
-    color: #ff6f61;
-}
+  }
+  #social-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    font-size: 2.6rem;
+  }
+  #social-container button, #social-container a {
+    cursor: pointer;
+    font-size: 2.6rem;
+    background: none;
+    border: none;
+    color: #aa2e30;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    line-height: 1;
+  }
+  #social-container button:hover,
+  #social-container a:hover {
+    color: #d85b5d;
+    background: linear-gradient(135deg, #009246, #ffffff, #ce2b37);
+    box-shadow: 0 3px 10px rgba(0,146,70,0.7);
+    transform: none;
+  }
+  #foto-lingue-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 35px;
+    width: 100%;
+    max-width: 780px;
+  }
+  #foto-sinistra-container,
+  #foto-destra-container {
+    max-width: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #foto-sinistra,
+  #foto-destra {
+    width: 210px;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    border-radius: 12px;
+    border: 2px solid #aa2e30;
+    box-shadow: 0 0 8px #aa2e30;
+    transition: transform 0.3s ease;
+  }
+  body.dark-mode #foto-sinistra,
+  body.dark-mode #foto-destra {
+    border-color: #66ff99;
+    box-shadow: 0 0 10px #66ff99;
+  }
+  #foto-sinistra:hover,
+  #foto-destra:hover {
+    transform: scale(1.05);
+  }
+  #descrizione,
+  #descrizione-seconda-foto {
+    display: none;
+    width: 100%;
+    max-height: 280px;
+    overflow-y: auto;
+    margin-top: 12px;
+    padding: 16px 20px;
+    border: 2px solid #5472d3;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(84, 114, 211, 0.5);
+    background: linear-gradient(to bottom, #ffffffdd 0%, #e0e7ff 85%, #a9b6db 100%);
+    color: #222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    user-select: text;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  body.dark-mode #descrizione,
+  body.dark-mode #descrizione-seconda-foto {
+    background: #333;
+    color: #ddd;
+    border-color: #66ff99;
+    box-shadow: 0 0 12px #66ff99;
+  }
+  #language-selector {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 16px 0;
+  }
+  #language-selector span {
+    display: block !important;
+    font-size: 1.7rem;
+    cursor: pointer;
+    color: #aa2e30;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    user-select: none;
+  }
+  #language-selector span.active-lang,
+  #language-selector span:hover {
+    color: #d85b5d;
+    transform: scale(1.3);
+  }
+  #demo-list {
+    display: none;
+    width: 90%;
+    max-width: 550px;
+    max-height: 280px;
+    overflow-y: auto;
+    border: 3px solid #bd5a81;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(189, 90, 129, 0.7);
+    padding: 14px 18px;
+    background: linear-gradient(to bottom, #fce6f0 0%, #eec7d8 85%, #dba9b6 100%);
+    margin-bottom: 30px;
+    color: #111;
+    user-select: none;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+  }
+  body.dark-mode #demo-list {
+    background: #222;
+    color: #ddd;
+    border-color: #66ff99;
+    box-shadow: 0 0 15px #66ff99;
+  }
+  .demo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #b2c6e4;
+  }
+  .demo-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+  .demo-title {
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #222;
+    user-select: none;
+  }
+  body.dark-mode .demo-title {
+    color: #ddd;
+  }
+  .play-btn {
+    cursor: pointer;
+    background: linear-gradient(135deg, #009246, #ffffff, #ce2b37);
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    padding: 7px 16px;
+    color: black;
+    transition: background 0.3s ease;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  .play-btn:hover {
+    background: linear-gradient(135deg, #ce2b37, #ffffff, #009246);
+  }
+  body.dark-mode .play-btn {
+    color: #222;
+  }
+  @media screen and (max-width: 768px) {
+    #foto-lingue-container {
+      flex-direction: column !important;
+      align-items: center;
+      gap: 20px;
+    }
+    #foto-sinistra-container,
+    #foto-destra-container {
+      max-width: 90vw !important;
+      width: 90vw;
+    }
+    #foto-sinistra,
+    #foto-destra {
+      width: 90vw !important;
+    }
+    #content {
+      padding: 80px 10px 20px !important;
+    }
+    header {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 10px 15px;
+    }
+    #scroll-content span {
+      font-size: 1.3rem !important;
+      margin-right: 2rem !important;
+    }
+    #social-container {
+      font-size: 2rem !important;
+      gap: 20px !important;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #language-selector span {
+      font-size: 1.5rem !important;
+      padding: 6px 0 !important;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    #scroll-content span {
+      font-size: 1rem !important;
+      margin-right: 1rem !important;
+    }
+    #social-container {
+      font-size: 1.5rem !important;
+      gap: 12px !important;
+    }
+    #language-selector span {
+      font-size: 1.2rem !important;
+    }
+  }
 </style>
-
-
 </head>
 <body>
-
-  
+<div id="container">
 <header>
-  <h1><span id="ciao">Ciao</span> da <span id="nome">Vincenzo</span></h1>
-
-  <div style="display:flex; justify-content:center; gap:10px; margin-top:5px;">
-    <div id="data"></div>
-    <div id="orologio"></div>
+  <button id="heart-button" aria-label="Eric Musica" title="A mio figlio Eric">💖</button>
+  <div id="scroll-container" aria-label="Titoli multilingua scorrevoli">
+    <div id="scroll-content">
+      <span>Ciao da Vincenzo</span>
+      <span>Hello from Vincenzo</span>
+      <span>Hola de Vincenzo</span>
+      <span>Hallo von Vincenzo</span>
+      <span>Bonjour de Vincenzo</span>
+      <span>Ciao da Vincenzo</span>
+      <span>Hello from Vincenzo</span>
+      <span>Hola de Vincenzo</span>
+      <span>Hallo von Vincenzo</span>
+      <span>Bonjour de Vincenzo</span>
+    </div>
   </div>
-
-  <!-- Bandiere direttamente visibili -->
-  <div id="bandiere">
-    <span onclick="switchLang('it')">🇮🇹</span>
-    <span onclick="switchLang('en')">🇬🇧</span>
-    <span onclick="switchLang('es')">🇪🇸</span>
-    <span onclick="switchLang('de')">🇩🇪</span>
-    <span onclick="switchLang('fr')">🇫🇷</span>
-  </div>
+  <div id="date-time"></div>
 </header>
-
-<!-- Pulsante piccolo per musica di sottofondo -->
-<button id="bgBtn" onclick="toggleBgAudio()" 
-        style="position:fixed;top:10px;right:10px;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,0.3);cursor:pointer;z-index:9999;"
-        title="A mio figlio Eric">
-  ❤️
-</button>
-<audio id="bgAudio" src="musica/eric.mp3" loop></audio>
-
-<main>
-
-  <!-- Pulsanti principali -->
-  <div id="controls">
-    <button class="control-btn" data-title="Mostra/Nascondi Demo" onclick="toggleDemo()">🎧</button>
-    <button class="control-btn" data-title="Modalità Notte" onclick="toggleDarkMode()">🌙</button>
-    <button class="control-btn" data-title="Sostieni" onclick="toggleIBAN()">💖</button>
-    <a class="control-btn" data-title="Contattami" href="mailto:vfanara@sunrise.ch">📬</a>
-    <a class="control-btn" data-title="WhatsApp" href="https://wa.me/41763430047" target="_blank">💬</a>
+<div id="content">
+  <div id="social-container">
+    <button title="Le mie demo 🎧" aria-label="Le mie demo" id="demo-toggle">🎧</button>
+    <button title="Modalità notte 🌙" aria-label="Modalità notte" id="dark-mode-toggle">🌙</button>
+    <button title="Sostienimi 💖" aria-label="Sostienimi">💖</button>
+    <a href="mailto:vfanara@sunrise.ch" title="Email" aria-label="Email">📬</a>
+    <a href="https://wa.me/41763430047" title="Whatsapp" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer">💬</a>
   </div>
-
-
-  
-  <!-- Pulsante Me -->
-<button id="btnMe">Me</button>
-
-<!-- Immagini -->
-<div id="foto-container" style="display:flex; justify-content:center; align-items:center; gap:16px; position:relative;">
-  <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" class="foto">
-  <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" class="foto">
-  
-  <!-- Foto centrale nascosta -->
-  <img src="img/vincenzo-foto2.png" alt="Vincenzo Foto 2" id="fotoMe" class="foto" style="
-       display:none;
-       position:absolute;
-       top:50%;
-       left:50%;
-       transform:translate(-50%, -50%);
-       max-width:200px;
-       border-radius:8px;
-       z-index:10;
-       box-shadow:0 4px 15px rgba(0,0,0,0.3);
-  ">
+  <div id="foto-lingue-container">
+    <div id="foto-sinistra-container">
+      <img src="img/vincenzo-cartoon.png" alt="Vincenzo Cartoon" id="foto-sinistra" title="Clicca per vedere descrizione" />
+      <section id="descrizione" aria-live="polite" aria-hidden="true"></section>
+    </div>
+    <nav id="language-selector" aria-label="Selettore lingua">
+      <span data-lang="it" class="active-lang" title="Italiano">🇮🇹</span>
+      <span data-lang="en" title="English">🇬🇧</span>
+      <span data-lang="es" title="Español">🇪🇸</span>
+      <span data-lang="de" title="Deutsch">🇩🇪</span>
+      <span data-lang="fr" title="Français">🇫🇷</span>
+    </nav>
+    <div id="foto-destra-container">
+      <img src="img/vincenzo-foto-1.PNG" alt="Vincenzo Foto 1" id="foto-destra" title="Dai un'occhiata" />
+      <section id="descrizione-seconda-foto" aria-live="polite" aria-hidden="true"></section>
+    </div>
+  </div>
+  <div id="demo-list"></div>
 </div>
-
+</div>
+<footer style="text-align: center; padding: 15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 0.9rem; color: #555;">
+  © 2025 Vincenzo Fanara. All rights reserved.
+</footer>
 <script>
-const btnMe = document.getElementById('btnMe');
-const fotoMe = document.getElementById('fotoMe');
+  const texts = {
+  it: `<h2>Chi sono</h2>
+      <p>Mi chiamo Vincenzo, e la mia vita è una melodia fatta di emozioni, esperienze e legami profondi. Nato a Catanzaro, nella mia amata Calabria, terra di sole e passione, e nell’adorata Italia, ho imparato presto che la musica non è solo suono: è memoria, è cuore, è voce dell’anima.</p>
+      <p>Da ragazzo mi perdevo tra un pallone, un passo di danza e un microfono da karaoke. Non cercavo la perfezione, ma la gioia di condividere, il piacere di stare tra amici che vivevano — e continuano a vivere — la musica con amore e passione. Quella gioia è diventata la mia strada.</p>
+      <p>Oggi scrivo soprattutto testi e, servendomi della tecnologia, creo basi musicali e trasformo pensieri in canzoni. Ogni nota che compongo è un frammento di vita, un regalo che puoi dedicare a chi ami. Perché la musica, quando nasce dal cuore, diventa non solo poesia, ma qualcosa di personale che rimane nel tempo.</p>
+      <p>La mia ispirazione più grande? La mia famiglia. I miei figli, che crescono sotto i miei occhi, e mia madre Teresa, il mio punto fermo. I momenti vissuti con loro sono la mia linfa, e ogni parola che scrivo porta un po’ di loro dentro.</p>`,
+  en: `<h2>About Me</h2>
+      <p>My name is Vincenzo, and my life is a melody made of emotions, experiences, and deep bonds. Born in Catanzaro, in my beloved Calabria, land of sun and passion, and in beloved Italy, I soon learned that music is not just sound: it is memory, heart, and the voice of the soul.</p>
+      <p>As a boy, I lost myself between a football, a dance step, and a karaoke microphone. I was not looking for perfection, but the joy of sharing, the pleasure of being among friends who lived — and still live — music with love and passion. That joy became my path.</p>
+      <p>Today I mainly write lyrics and, using technology, I create musical bases and turn thoughts into songs. Every note I compose is a fragment of life, a gift you can dedicate to those you love. Because music, when it comes from the heart, becomes not only poetry, but something personal that remains over time.</p>
+      <p>My greatest inspiration? My family. My children, who grow up before my eyes, and my mother Teresa, my anchor. The moments spent with them are my lifeblood, and every word I write carries a bit of them inside.</p>`,
+  es: `<h2>Quién soy</h2>
+      <p>Me llamo Vincenzo, y mi vida es una melodía hecha de emociones, experiencias y lazos profundos. Nací en Catanzaro, en mi querida Calabria, tierra de sol y pasión, y en la adorada Italia, aprendí pronto que la música no es solo sonido: es memoria, es corazón, es la voz del alma.</p>
+      <p>De niño me perdía entre un balón, un paso de baile y un micrófono de karaoke. No buscaba la perfección, sino la alegría de compartir, el placer de estar entre amigos que vivían —y siguen viviendo— la música con amor y pasión. Esa alegría se convirtió en mi camino.</p>
+      <p>Hoy escribo sobre todo letras y, usando la tecnología, creo bases musicales y transformo pensamientos en canciones. Cada nota que compongo es un fragmento de vida, un regalo que puedes dedicar a quien amas. Porque la música, cuando nace del corazón, se convierte no solo en poesía, sino en algo personal que permanece en el tiempo.</p>
+      <p>¿Mi mayor inspiración? Mi familia. Mis hijos, que crecen ante mis ojos, y mi madre Teresa, mi punto de referencia. Los momentos vividos con ellos son mi savia, y cada palabra que escribo lleva un poco de ellos dentro.</p>`,
+  de: `<h2>Wer ich bin</h2>
+      <p>Ich heiße Vincenzo, und mein Leben ist eine Melodie aus Emotionen, Erfahrungen und tiefen Bindungen. Geboren in Catanzaro, in meinem geliebten Kalabrien, Land der Sonne und Leidenschaft, und im geliebten Italien, habe ich früh gelernt, dass Musik nicht nur Klang ist: Sie ist Erinnerung, Herz und Stimme der Seele.</p>
+      <p>Als Junge verlor ich mich zwischen einem Ball, einem Tanzschritt und einem Karaoke-Mikrofon. Ich suchte nicht nach Perfektion, sondern nach der Freude am Teilen, dem Vergnügen, unter Freunden zu sein, die Musik mit Liebe und Leidenschaft lebten — und immer noch leben. Diese Freude wurde mein Weg.</p>
+      <p>Heute schreibe ich vor allem Texte und kreiere mit Hilfe der Technik Musikgrundlagen und verwandle Gedanken in Lieder. Jede Note, die ich komponiere, ist ein Stück Leben, ein Geschenk, das du denen widmen kannst, die du liebst. Denn Musik, wenn sie aus dem Herzen kommt, wird nicht nur Poesie, sondern etwas Persönliches, das bleibt.</p>
+      <p>Meine größte Inspiration? Meine Familie. Meine Kinder, die vor meinen Augen aufwachsen, und meine Mutter Teresa, mein Ankerpunkt. Die Momente mit ihnen sind mein Lebenselixier, und jedes Wort, das ich schreibe, trägt ein Stück von ihnen in sich.</p>`,
+  fr: `<h2>Qui suis-je</h2>
+      <p>Je m'appelle Vincenzo, et ma vie est une mélodie faite d'émotions, d'expériences et de liens profonds. Né à Catanzaro, dans ma chère Calabre, terre de soleil et de passion, et dans l'Italie adorée, j'ai vite appris que la musique n'est pas seulement un son : c'est la mémoire, le cœur, la voix de l'âme.</p>
+      <p>Enfant, je me perdais entre un ballon, un pas de danse et un micro de karaoké. Je ne cherchais pas la perfection, mais la joie de partager, le plaisir d'être parmi des amis qui vivaient — et vivent encore — la musique avec amour et passion. Cette joie est devenue mon chemin.</p>
+      <p>Aujourd'hui, j'écris surtout des textes et, grâce à la technologie, je crée des bases musicales et transforme des pensées en chansons. Chaque note que je compose est un fragment de vie, un cadeau que tu peux offrir à ceux que tu aimes. Parce que la musique, lorsqu'elle naît du cœur, devient non seulement de la poésie, mais quelque chose de personnel qui reste dans le temps.</p>
+      <p>Ma plus grande inspiration ? Ma famille. Mes enfants, qui grandissent sous mes yeux, et ma mère Teresa, mon point d'ancrage. Les moments vécus avec eux sont ma sève, et chaque mot que j'écris porte un peu d'eux en lui.</p>`
+};
 
-btnMe.addEventListener('click', () => {
-  if(fotoMe.style.display === 'none') {
-    fotoMe.style.display = 'block';
-  } else {
-    fotoMe.style.display = 'none';
-  }
-});
-</script>
+  const descrizioneSecondaFotoTexts = {
+  it: `<p>Ciao, sono felice che tu sia arrivato fin qui, pronto a condividere amore, passione, gioia e anche dolore. Sì, la vita è fatta di tutto questo, ma nonostante le difficoltà, continuiamo sempre ad andare avanti. Questa è la nostra vera forza: la positività che ci spinge oltre ogni ostacolo.</p>
+       <p>Non sempre viviamo momenti felici, ma è in questi momenti che la musica assume un ruolo speciale. Una frase, una canzone, le parole giuste possono impadronirsi dei nostri sentimenti, farci emozionare, sorridere, persino piangere. Ed eccomi qui, pronto a condividere tutto questo con chi ha la stessa gioia di vivere e la stessa sensibilità.</p>
+       <p>Ora ti chiedo: vuoi dedicare una canzone a una persona speciale nella tua vita? Oppure vuoi regalare un ricordo unico accompagnato dalla musica? Puoi darmi qualche dettaglio o lasciare che la creatività faccia il resto; creerò qualcosa di originale, puro e unico.</p>
+       <p>Metti alla prova la mia creatività e vedrai la meraviglia che si può realizzare. Se vuoi, contattami e decideremo insieme ogni dettaglio. Ti aspetto per intraprendere questa bella avventura.</p>
+       <p>Un saluto sincero,<br>Vincenzo</p>`,
+  en: `<p>Hello, I’m glad you’ve come this far, ready to share love, passion, joy, and also pain. Yes, life is made of these things, but despite difficulties, we always keep moving forward. This is our true strength: positivity that pushes us beyond every obstacle.</p>
+       <p>We don’t always live happy moments, but it’s in those moments that music plays a special role. A phrase, a song, the right words can take hold of our feelings, make us emotional, smile, even cry. And here I am, ready to share all of this with those who have the same joy of living and sensitivity.</p>
+       <p>Now I ask you: do you want to dedicate a song to someone special in your life? Or maybe you want to give a unique memory accompanied by music? You can give me some details or let creativity take the lead; I’ll create something original, pure and unique.</p>
+       <p>Put my creativity to the test and you’ll see the marvel that can be made. If you want, contact me and we will decide every detail together. I look forward to starting this beautiful adventure together.</p>
+       <p>Sincerely,<br>Vincenzo</p>`,
+  es: `<p>Hola, me alegra que hayas llegado hasta aquí, listo para compartir amor, pasión, alegría y también dolor. Sí, la vida está hecha de todo esto, pero a pesar de las dificultades, siempre seguimos adelante. Esta es nuestra verdadera fuerza: la positividad que nos impulsa más allá de cada obstáculo.</p>
+       <p>No siempre vivimos momentos felices, pero es en esos momentos cuando la música juega un papel especial. Una frase, una canción, las palabras correctas pueden apoderarse de nuestros sentimientos, hacernos emocionar, sonreír, incluso llorar. Y aquí estoy, listo para compartir todo esto con quienes tienen la misma alegría de vivir y sensibilidad.</p>
+       <p>Ahora te pregunto: ¿quieres dedicar una canción a alguien especial en tu vida? ¿O quizás quieres regalar un recuerdo único acompañado de música? Puedes darme algunos detalles o dejar que la creatividad tome el mando; crearé algo original, puro y único.</p>
+       <p>Pon a prueba mi creatividad y verás la maravilla que se puede lograr. Si quieres, contáctame y decidiremos cada detalle juntos. Espero con ansias comenzar esta hermosa aventura juntos.</p>
+       <p>Sinceramente,<br>Vincenzo</p>`,
+  de: `<p>Hallo, ich freue mich, dass du bis hierher gekommen bist, bereit, Liebe, Leidenschaft, Freude und auch Schmerz zu teilen. Ja, das Leben besteht aus all dem, aber trotz der Schwierigkeiten gehen wir immer weiter. Das ist unsere wahre Stärke: die Positivität, die uns über jedes Hindernis hinaus antreibt.</p>
+       <p>Wir erleben nicht immer glückliche Momente, aber gerade in diesen Momenten spielt Musik eine besondere Rolle. Ein Satz, ein Lied, die richtigen Worte können unsere Gefühle ergreifen, uns emotional machen, lächeln lassen, sogar weinen. Und hier bin ich, bereit, all das mit denen zu teilen, die dieselbe Lebensfreude und Sensibilität haben.</p>
+       <p>Jetzt frage ich dich: Möchtest du einem besonderen Menschen in deinem Leben ein Lied widmen? Oder möchtest du vielleicht eine einzigartige Erinnerung mit Musik schenken? Du kannst mir einige Details geben oder der Kreativität freien Lauf lassen; ich werde etwas Originelles, Reines und Einzigartiges schaffen.</p>
+       <p>Fordere meine Kreativität heraus und du wirst sehen, welches Wunder entstehen kann. Wenn du möchtest, kontaktiere mich und wir entscheiden gemeinsam alle Details. Ich freue mich darauf, dieses schöne Abenteuer zusammen zu beginnen.</p>
+       <p>Herzlich,<br>Vincenzo</p>`,
+  fr: `<p>Bonjour, je suis heureux que tu sois arrivé jusqu'ici, prêt à partager amour, passion, joie et aussi douleur. Oui, la vie est faite de tout cela, mais malgré les difficultés, nous avançons toujours. C’est notre véritable force : la positivité qui nous pousse au-delà de chaque obstacle.</p>
+       <p>Nous ne vivons pas toujours des moments heureux, mais c’est dans ces moments que la musique joue un rôle spécial. Une phrase, une chanson, les bons mots peuvent s’emparer de nos sentiments, nous faire vibrer, sourire, voire pleurer. Et me voici prêt à partager tout cela avec ceux qui ont la même joie de vivre et sensibilité. <br>Vincenzo</p>`
+};
 
+  const demos = [
+    "musica/Ali-di-fiducia.mp3",
+    "musica/Anima_di_Soul_e_Vita.mp3",
+    "musica/Boards_and_Moves.mp3",
+    "musica/Bomber-Sorriso-in-Loop.mp3",
+    "musica/celui-qui-a-donne-sans-rien-demander.mp3",
+    "musica/chi-ha-dato-senza-chiedere.mp3",
+    "musica/Codici_nta_u_sangu_4.mp3",
+    "musica/Colei-che-Dio-mi-ha-donato.mp3",
+    "musica/Cuando-nacimos-en-esa-tierra.mp3",
+    "musica/demo1.mp3",
+    "musica/demo2.mp3",
+    "musica/El-que-dio-sin-pedir.mp3",
+    "musica/Ela_Que_Deus_Me_Deu.mp3",
+    "musica/Elle-Que-Dieu-Ma-Donne.mp3",
+    "musica/Entre-Suenos-y-sombras.mp3",
+    "musica/Il-viso-che-Cambia.mp3",
+    "musica/La_Cara_que_Cambia.mp3",
+    "musica/Liens_qui_restent.mp3",
+    "musica/Maschere_e_Verita_4.mp3",
+    "musica/Nel_cuore_che_ama.mp3",
+    "musica/Perfectly_Made.mp3",
+    "musica/Quel_che_resta_da_salvare.mp3",
+    "musica/Quem-deu-sem-pedir.mp3",
+    "musica/Roots-and-New-Roads.mp3",
+    "musica/The_Heart_That_Loves.mp3",
+    "musica/The_One_Who_Gave_Without_Asking.mp3",
+    "musica/Tra-Radici-e-Strade-Nuove.mp3"
+  ];
 
+  const langSpans = document.querySelectorAll('#language-selector span');
+  const demoList = document.getElementById('demo-list');
+  const demoToggle = document.getElementById('demo-toggle');
+  const descrizione = document.getElementById('descrizione');
+  const descrizioneSecondaFoto = document.getElementById('descrizione-seconda-foto');
+  const fotoSinistra = document.getElementById('foto-sinistra');
+  const fotoDestra = document.getElementById('foto-destra');
 
-  <!-- Descrizioni multilingua -->
-<section id="descrizione" class="hidden">
-  <!-- Italiano -->
-  <div class="descrizione-lingua" id="descrizione-it">
-    <h2>Chi sono</h2>
-    <p>Mi chiamo Vincenzo, e la mia vita è una melodia fatta di emozioni, esperienze e legami profondi. Nato a Catanzaro, nella mia amata Calabria, terra di sole e passione, e nell’adorata Italia, ho imparato presto che la musica non è solo suono: è memoria, è cuore, è voce dell’anima.</p>
-    <p>Da ragazzo mi perdevo tra un pallone, un passo di danza e un microfono da karaoke. Non cercavo la perfezione, ma la gioia di condividere, il piacere di stare tra amici che vivevano — e continuano a vivere — la musica con amore e passione. Quella gioia è diventata la mia strada.</p>
-    <p>Oggi scrivo soprattutto testi e, servendomi della tecnologia, creo basi musicali e trasformo pensieri in canzoni. Ogni nota che compongo è un frammento di vita, un regalo che puoi dedicare a chi ami. Perché la musica, quando nasce dal cuore, diventa non solo poesia, ma qualcosa di personale che rimane nel tempo.</p>
-    <p>La mia ispirazione più grande? La mia famiglia. I miei figli, che crescono sotto i miei occhi, e mia madre Teresa, il mio punto fermo. I momenti vissuti con loro sono la mia linfa, e ogni parola che scrivo porta un po’ di loro dentro.</p>
-    <p>Se sei qui, ti auguro di emozionarti, sorridere e magari trovare una canzone che parli anche di te. E se vuoi creare qualcosa di unico, <a href="mailto:vfanara@sunrise.ch">scrivimi</a>.<br><strong>Vincenzo</strong></p>
-  </div>
+  let currentAudio = null;
+  let currentBtn = null;
 
-  <!-- Inglese -->
-  <div class="descrizione-lingua hidden" id="descrizione-en">
-    <h2>About Me</h2>
-    <p>My name is Vincenzo, and my life is a melody made of emotions, experiences, and deep bonds. Born in Catanzaro, in my beloved Calabria, land of sun and passion, and in beloved Italy, I soon learned that music is not just sound: it is memory, heart, and the voice of the soul.</p>
-    <p>As a boy, I lost myself between a football, a dance step, and a karaoke microphone. I was not looking for perfection, but the joy of sharing, the pleasure of being among friends who lived — and still live — music with love and passion. That joy became my path.</p>
-    <p>Today I mainly write lyrics and, using technology, I create musical bases and turn thoughts into songs. Every note I compose is a fragment of life, a gift you can dedicate to those you love. Because music, when it comes from the heart, becomes not only poetry, but something personal that remains over time.</p>
-    <p>My greatest inspiration? My family. My children, who grow up before my eyes, and my mother Teresa, my anchor. The moments spent with them are my lifeblood, and every word I write carries a bit of them inside.</p>
-    <p>If you are here, I hope you feel emotions, smile, and maybe find a song that speaks about you too. And if you want to create something unique, <a href="mailto:vfanara@sunrise.ch">write to me</a>.<br><strong>Vincenzo</strong></p>
-  </div>
+  function createDemoItem(src) {
+    const div = document.createElement('div');
+    div.className = 'demo-item';
 
-  <!-- Spagnolo -->
-  <div class="descrizione-lingua hidden" id="descrizione-es">
-    <h2>Quién soy</h2>
-    <p>Me llamo Vincenzo, y mi vida es una melodía hecha de emociones, experiencias y lazos profundos. Nací en Catanzaro, en mi querida Calabria, tierra de sol y pasión, y en la adorada Italia, aprendí pronto que la música no es solo sonido: es memoria, es corazón, es la voz del alma.</p>
-    <p>De niño me perdía entre un balón, un paso de baile y un micrófono de karaoke. No buscaba la perfección, sino la alegría de compartir, el placer de estar entre amigos que vivían —y siguen viviendo— la música con amor y pasión. Esa alegría se convirtió en mi camino.</p>
-    <p>Hoy escribo sobre todo letras y, usando la tecnología, creo bases musicales y transformo pensamientos en canciones. Cada nota que compongo es un fragmento de vida, un regalo que puedes dedicar a quien amas. Porque la música, cuando nace del corazón, se convierte no solo en poesía, sino en algo personal que permanece en el tiempo.</p>
-    <p>¿Mi mayor inspiración? Mi familia. Mis hijos, que crecen ante mis ojos, y mi madre Teresa, mi punto de referencia. Los momentos vividos con ellos son mi savia, y cada palabra que escribo lleva un poco de ellos dentro.</p>
-    <p>Si estás aquí, te deseo que te emociones, sonrías y quizás encuentres una canción que también hable de ti. Y si quieres crear algo único, <a href="mailto:vfanara@sunrise.ch">escríbeme</a>.<br><strong>Vincenzo</strong></p>
-  </div>
+    const title = document.createElement('p');
+    title.className = 'demo-title';
+    const filename = src.split('/').pop();
+    title.textContent = filename.replace(/[-_]/g, ' ').replace('.mp3', '');
 
-  <!-- Tedesco -->
-  <div class="descrizione-lingua hidden" id="descrizione-de">
-    <h2>Wer ich bin</h2>
-    <p>Ich heiße Vincenzo, und mein Leben ist eine Melodie aus Emotionen, Erfahrungen und tiefen Bindungen. Geboren in Catanzaro, in meinem geliebten Kalabrien, Land der Sonne und Leidenschaft, und im geliebten Italien, habe ich früh gelernt, dass Musik nicht nur Klang ist: Sie ist Erinnerung, Herz und Stimme der Seele.</p>
-    <p>Als Junge verlor ich mich zwischen einem Ball, einem Tanzschritt und einem Karaoke-Mikrofon. Ich suchte nicht nach Perfektion, sondern nach der Freude am Teilen, dem Vergnügen, unter Freunden zu sein, die Musik mit Liebe und Leidenschaft lebten — und immer noch leben. Diese Freude wurde mein Weg.</p>
-    <p>Heute schreibe ich vor allem Texte und kreiere mit Hilfe der Technik Musikgrundlagen und verwandle Gedanken in Lieder. Jede Note, die ich komponiere, ist ein Stück Leben, ein Geschenk, das du denen widmen kannst, die du liebst. Denn Musik, wenn sie aus dem Herzen kommt, wird nicht nur Poesie, sondern etwas Persönliches, das bleibt.</p>
-    <p>Meine größte Inspiration? Meine Familie. Meine Kinder, die vor meinen Augen aufwachsen, und meine Mutter Teresa, mein Ankerpunkt. Die Momente mit ihnen sind mein Lebenselixier, und jedes Wort, das ich schreibe, trägt ein Stück von ihnen in sich.</p>
-    <p>Wenn du hier bist, wünsche ich dir, dass du dich berühren lässt, lächelst und vielleicht ein Lied findest, das auch von dir erzählt. Und wenn du etwas Einzigartiges schaffen möchtest, <a href="mailto:vfanara@sunrise.ch">schreib mir</a>.<br><strong>Vincenzo</strong></p>
-  </div>
+    const btn = document.createElement('button');
+    btn.className = 'play-btn';
+    btn.textContent = '▶ Play';
+    btn.setAttribute('data-src', src);
 
-  <!-- Francese -->
-  <div class="descrizione-lingua hidden" id="descrizione-fr">
-    <h2>Qui suis-je</h2>
-    <p>Je m'appelle Vincenzo, et ma vie est une mélodie faite d'émotions, d'expériences et de liens profonds. Né à Catanzaro, dans ma chère Calabre, terre de soleil et de passion, et dans l'Italie adorée, j'ai vite appris que la musique n'est pas seulement un son : c'est la mémoire, le cœur, la voix de l'âme.</p>
-    <p>Enfant, je me perdais entre un ballon, un pas de danse et un micro de karaoké. Je ne cherchais pas la perfection, mais la joie de partager, le plaisir d'être parmi des amis qui vivaient — et vivent encore — la musique avec amour et passion. Cette joie est devenue mon chemin.</p>
-    <p>Aujourd'hui, j'écris surtout des textes et, grâce à la technologie, je crée des bases musicales et transforme des pensées en chansons. Chaque note que je compose est un fragment de vie, un cadeau que tu peux offrir à ceux que tu aimes. Parce que la musique, lorsqu'elle naît du cœur, devient non seulement de la poésie, mais quelque chose de personnel qui reste dans le temps.</p>
-    <p>Ma plus grande inspiration ? Ma famille. Mes enfants, qui grandissent sous mes yeux, et ma mère Teresa, mon point d'ancrage. Les moments vécus avec eux sont ma sève, et chaque mot que j'écris porte un peu d'eux en lui.</p>
-    <p>Si tu es ici, je te souhaite de t'émouvoir, de sourire et peut-être de trouver une chanson qui parle aussi de toi. Et si tu veux créer quelque chose d'unique, <a href="mailto:vfanara@sunrise.ch">écris-moi</a>.<br><strong>Vincenzo</strong></p>
-  </div>
-</section>
-
-
-
-  <!-- Demo musicali -->
-<section id="demoContainer" class="hidden">
-  <h2 id="titoloDemo">🎧 Le Mie Demo Musicali</h2>
-  <div class="demo-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:16px;">
-
-    <div class="demo-card"><p>Ali di fiducia</p><button data-src="musica/Ali-di-fiducia.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Anima di Soul e Vita</p><button data-src="musica/Anima_di_Soul_e_Vita.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Boards and Moves</p><button data-src="musica/Boards_and_Moves.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Bomber Sorriso in Loop</p><button data-src="musica/Bomber-Sorriso-in-Loop.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Celui qui a donné sans rien demander</p><button data-src="musica/celui-qui-a-donne-sans-rien-demander.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Chi ha dato senza chiedere</p><button data-src="musica/chi-ha-dato-senza-chiedere.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Codici nta u sangu 4</p><button data-src="musica/Codici_nta_u_sangu_4.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Colei che Dio mi ha donato</p><button data-src="musica/Colei-che-Dio-mi-ha-donato.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Cuando nacimos en esa tierra</p><button data-src="musica/Cuando-nacimos-en-esa-tierra.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Demo 1</p><button data-src="musica/demo1.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Demo 2</p><button data-src="musica/demo2.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>El que dio sin pedir</p><button data-src="musica/El-que-dio-sin-pedir.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Ela Que Deus Me Deu</p><button data-src="musica/Ela_Que_Deus_Me_Deu.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Elle Que Dieu M’a Donné</p><button data-src="musica/Elle-Que-Dieu-Ma-Donne.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Entre Sueños y sombras</p><button data-src="musica/Entre-Suenos-y-sombras.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Il viso che Cambia</p><button data-src="musica/Il-viso-che-Cambia.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>La Cara que Cambia</p><button data-src="musica/La_Cara_que_Cambia.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Liens qui restent</p><button data-src="musica/Liens_qui_restent.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Maschere e Verità 4</p><button data-src="musica/Maschere_e_Verita_4.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Nel cuore che ama</p><button data-src="musica/Nel_cuore_che_ama.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Perfectly Made</p><button data-src="musica/Perfectly_Made.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Quel che resta da salvare</p><button data-src="musica/Quel_che_resta_da_salvare.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Quem deu sem pedir</p><button data-src="musica/Quem-deu-sem-pedir.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Roots and New Roads</p><button data-src="musica/Roots-and-New-Roads.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>The Heart That Loves</p><button data-src="musica/The_Heart_That_Loves.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>The One Who Gave Without Asking</p><button data-src="musica/The_One_Who_Gave_Without_Asking.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>She Who Was Sent by God</p><button data-src="musica/She-Who-Was-Sent-by-God.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Tra Radici e Strade Nuove</p><button data-src="musica/Tra-Radici-e-Strade-Nuove.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>Una sola voce</p><button data-src="musica/Una-sola-voce.mp3">▶ Play</button></div>
-    <div class="demo-card"><p>We Don’t Change Masks</p><button data-src="musica/We-Dont-Change-Masks.mp3">▶ Play</button></div>
-
-  </div>
-</section>
-
-<script>
-let currentAudio = null;
-let currentButton = null;
-
-function stopCurrentAudio() {
-  if(currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
-    currentAudio = null;
-  }
-  if(currentButton) {
-    currentButton.textContent = '▶ Play';
-    currentButton = null;
-  }
-}
-
-document.querySelectorAll('#demoContainer button').forEach(btn => {
-  btn.addEventListener('click', function() {
-
-    // Se clicchi lo stesso pulsante → toggle play/pause
-    if(currentButton === this) {
-      if(currentAudio.paused) {
-        currentAudio.play();
-        this.textContent = '⏸ Pause';
+    btn.addEventListener('click', () => {
+      if (currentAudio && currentAudio.src.includes(src)) {
+        if (!currentAudio.paused) {
+          currentAudio.pause();
+          btn.textContent = '▶ Play';
+        } else {
+          currentAudio.play();
+          btn.textContent = '⏸ Pausa';
+        }
       } else {
-        currentAudio.pause();
-        this.textContent = '▶ Play';
+        if (currentAudio) {
+          currentAudio.pause();
+          if (currentBtn) currentBtn.textContent = '▶ Play';
+        }
+        currentAudio = new Audio(src);
+        currentAudio.play();
+        btn.textContent = '⏸ Pausa';
+        if (currentBtn) currentBtn.textContent = '▶ Play';
+        currentBtn = btn;
+        currentAudio.addEventListener('ended', () => {
+          btn.textContent = '▶ Play';
+          currentAudio = null;
+          currentBtn = null;
+        });
       }
-      return;
+    });
+
+    div.appendChild(title);
+    div.appendChild(btn);
+    return div;
+  }
+
+  function populateDemos() {
+    if (demoList.childElementCount === 0) {
+      demos.forEach(src => {
+        const demoItem = createDemoItem(src);
+        demoList.appendChild(demoItem);
+      });
+    }
+  }
+
+  demoToggle.addEventListener('click', () => {
+    if (demoList.style.display === 'none' || demoList.style.display === '') {
+      demoList.style.display = 'block';
+      populateDemos();
+    } else {
+      demoList.style.display = 'none';
+      if (currentAudio) {
+        currentAudio.pause();
+        if (currentBtn) currentBtn.textContent = '▶ Play';
+        currentAudio = null;
+        currentBtn = null;
+      }
+    }
+  });
+
+  let isFirstDescrizioneVisible = false;
+  let isSecondDescrizioneVisible = false;
+
+  langSpans.forEach(span => {
+    span.addEventListener('click', () => {
+      langSpans.forEach(s => s.classList.remove('active-lang'));
+      span.classList.add('active-lang');
+      updateDescrizione();
+    });
+  });
+
+  fotoSinistra.addEventListener('click', () => {
+    isFirstDescrizioneVisible = !isFirstDescrizioneVisible;
+    updateDescrizione();
+  });
+
+  fotoDestra.addEventListener('click', () => {
+    isSecondDescrizioneVisible = !isSecondDescrizioneVisible;
+    updateDescrizione();
+  });
+
+  function updateDescrizione() {
+    const active = document.querySelector('#language-selector span.active-lang');
+    const lang = active ? active.getAttribute('data-lang') : 'it';
+
+    if (descrizione) {
+      descrizione.innerHTML = texts[lang] || texts.it;
+      descrizione.style.display = isFirstDescrizioneVisible ? 'block' : 'none';
+      descrizione.setAttribute('aria-hidden', !isFirstDescrizioneVisible);
     }
 
-    // Stop audio precedente
-    stopCurrentAudio();
+    if (descrizioneSecondaFoto) {
+      descrizioneSecondaFoto.innerHTML = descrizioneSecondaFotoTexts[lang] || descrizioneSecondaFotoTexts.it;
+      descrizioneSecondaFoto.style.display = isSecondDescrizioneVisible ? 'block' : 'none';
+      descrizioneSecondaFoto.setAttribute('aria-hidden', !isSecondDescrizioneVisible);
+    }
+  }
 
-    // Crea nuovo audio
-    currentAudio = new Audio(this.dataset.src);
-    currentButton = this;
-    currentAudio.play();
-    this.textContent = '⏸ Pause';
+  updateDescrizione();
 
-    currentAudio.onended = () => {
-      stopCurrentAudio();
-    };
+  function aggiornaDataOra() {
+    const mesi = ["gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"];
+    const oraElement = document.getElementById("date-time");
+    const now = new Date();
+    const giorno = now.getDate();
+    const mese = mesi[now.getMonth()];
+    let ore = now.getHours();
+    let minuti = now.getMinutes();
+    minuti = minuti < 10 ? "0" + minuti : minuti;
+    oraElement.textContent = `${giorno} ${mese} ${ore}:${minuti}`;
+  }
+  aggiornaDataOra();
+  setInterval(aggiornaDataOra, 60000);
+
+  const heartBtn = document.getElementById("heart-button");
+  const audio = new Audio("musica/Eric.mp3");
+
+  heartBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      heartBtn.classList.add("pulsing");
+    } else {
+      audio.pause();
+      heartBtn.classList.remove("pulsing");
+    }
   });
-});
+
+  audio.addEventListener("ended", () => {
+    heartBtn.classList.remove("pulsing");
+  });
+
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
 </script>
-
-
-
-</main>
-
-<section id="funzioni" style="margin:20px auto; max-width:700px; text-align:center; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-  <div id="ibanBox" style="display:none; font-size:14px; color:#333; width:100%; text-align:center; opacity:0; transition:opacity 0.4s; margin-top:10px;">
-    <p><strong>Banca:</strong> Raiffeisen</p>
-    <p><strong>IBAN:</strong> CHxx xxxx xxxx xxxx xxxx x</p>
-    <p><strong>Intestato a:</strong> Vincenzo Fanara</p>
-    <p><strong>Causale:</strong> Supporto Enzofana</p>
-  </div>
-</section>
-
-<script>
-// Tooltip touch
-document.querySelectorAll('.control-btn').forEach(btn => {
-  btn.addEventListener('touchstart', () => {
-    btn.classList.toggle('touch-tooltip');
-    setTimeout(()=>btn.classList.remove('touch-tooltip'), 2000);
-  });
-});
-
-// Toggle descrizione foto
-document.getElementById("btnMe").addEventListener("click", function(){
-  const descrizione = document.getElementById("descrizione");
-  const foto = document.querySelectorAll(".foto");
-  if(descrizione.style.display === "none" || descrizione.style.display === ""){
-    descrizione.style.display = "block";
-    foto[0].style.transform="translateX(-50%)";
-    foto[1].style.transform="translateX(50%)";
-  } else {
-    descrizione.style.display = "none";
-    foto[0].style.transform="translateX(0)";
-    foto[1].style.transform="translateX(0)";
-  }
-});
-
-// Toggle IBAN
-function toggleIBAN(){
-  const box = document.getElementById("ibanBox");
-  if(box.style.display==="none" || box.style.display===""){
-    box.style.display="block"; box.style.opacity=0;
-    setTimeout(()=>box.style.opacity=1,10);
-  } else {
-    box.style.opacity=0; setTimeout(()=>box.style.display="none",400);
-  }
-}
-
-// Toggle sezioni
-function toggleDemo(){ document.getElementById("demoContainer").classList.toggle("hidden"); }
-function toggleDarkMode(){ document.body.classList.toggle("dark-mode"); }
-
-// Cambia lingua (solo descrizioni)
-function switchLang(lang){ 
-  const descrizioni=['it','en','es','de','fr'];
-  descrizioni.forEach(l=>document.getElementById('descrizione-'+l).classList.add('hidden'));
-  document.getElementById('descrizione-'+lang).classList.remove('hidden');
-}
-
-// Orologio
-function updateClock(){
-  const now=new Date();
-  const d=String(now.getDate()).padStart(2,'0');
-  const m=String(now.getMonth()+1).padStart(2,'0');
-  const y=now.getFullYear();
-  const h=String(now.getHours()).padStart(2,'0');
-  const min=String(now.getMinutes()).padStart(2,'0');
-  const s=String(now.getSeconds()).padStart(2,'0');
-  document.getElementById("orologio").textContent=`${d}/${m}/${y} ${h}:${min}:${s}`;
-}
-setInterval(updateClock,1000); updateClock();
-
-// Musica sottofondo con cuore animato
-const bgAudio=document.getElementById('bgAudio');
-const bgBtn=document.getElementById('bgBtn');
-function toggleBgAudio(){
-  if(bgAudio.paused){
-    bgAudio.play().catch(()=>{console.log("Autoplay bloccato");}); 
-    bgBtn.textContent="💖"; // cuore pieno
-  } else {
-    bgAudio.pause(); 
-    bgBtn.textContent="❤️"; // cuore normale
-  }
-}
-
-
-// Playlist demo: un audio alla volta
-document.querySelectorAll("#demoContainer audio").forEach(a=>{
-  a.addEventListener('play',()=>{
-    document.querySelectorAll("#demoContainer audio").forEach(o=>{if(o!==a) o.pause();});
-  });
-});
-</script>
-
-<footer style="text-align:center; margin-top:60px; padding:20px; font-size:0.9rem; color:#555;">
-  © 2025 Vincenzo – All Rights Reserved
-</footer>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
