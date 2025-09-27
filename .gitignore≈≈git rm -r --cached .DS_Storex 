@@ -1,0 +1,6 @@
+# Ignora file di sistema Mac
+.DS_Store
+
+# Ignora cartelle backup
+enzofana-final backup 2/
+

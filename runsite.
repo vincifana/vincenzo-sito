@@ -1,0 +1,13 @@
+#!/bin/bash
+# Script per fare backup automatico + aprire index.html
+
+# Crea la cartella Backup se non esiste
+mkdir -p ~/Desktop/Backup
+
+# Crea backup con data e ora
+cp index.html ~/Desktop/Backup/index-$(date +%Y-%m-%d-%H%M%S).html
+
+# Apri il file nel browser
+open index.html
+
+
