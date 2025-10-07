@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVHCF1Z23E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZVHCF1Z23E');
+  </script>
+
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ciao da Vincenzo</title>
@@ -149,83 +159,58 @@
     -webkit-overflow-scrolling: touch;
     z-index: 50;
   }
-  #social-container {
-  position: fixed;
-  top: 45%;
-  right: 10px;   /* distanza dal bordo destro */
-  left: auto;    /* annulla il left */
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
-  background: transparent;
-  z-index: 1000;
-}
-
-#social-container a, #social-container button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  font-size: 22px;
-  color: white;
-  border-radius: 8px;
-  background-color: #555;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s ease;
-}
-
-#social-container a:hover, #social-container button:hover {
-  background-color: #aa2e30;
-}
-
-/* Colori specifici per i singoli social */
-#social-container a.facebook { background-color: #3b5998; }
-#social-container a.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
-#social-container a.tiktok { background-color: #000; }
-#social-container button#demo-toggle { background-color: #444; }
-#social-container a.sunrise { background-color: #ffcc00; color: black; }
-#social-container a.gmail { background-color: #d44638; }
-#social-container a.whatsapp { background-color: #25d366; }
-
-/* Metodo raccomandato: gap nel contenitore flex */
-#foto-lingue-container {
-  display: flex;
-  gap: 30px; /* spazio tra le foto, modifica per avvicinare o distanziare */
-}
-
-/* Metodo alternativo: margini sugli elementi */
-#foto-sinistra-container {
-  margin-right: 40px; /* spazio a destra */
-  position: relative;
-  top: 140px;    /* abbassa la foto sinistra */
-  left: 10px;   /* sposta a destra */
-}
-
-#foto-destra-container {
-  margin-left: 40px; /* spazio a sinistra */
-  position: relative;
-  top: 140px;    /* abbassa la foto destra */
-  left: 10px;   /* sposta a destra */
-}
-
-/* Dimensioni e aspetto delle immagini */
-#foto-sinistra, #foto-destra {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  border-radius: 12px;
-  border: 2px solid #aa2e30;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  object-fit: contain;
-  user-select: none;
-}
-
+  #social-container a, #social-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: white;
+    border-radius: 8px;
+    background-color: #555;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  #social-container a:hover, #social-container button:hover {
+    background-color: #aa2e30;
+  }
+  #social-container a.facebook { background-color: #3b5998; }
+  #social-container a.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+  #social-container a.tiktok { background-color: #000; }
+  #social-container button#demo-toggle { background-color: #444; }
+  #social-container a.sunrise { background-color: #ffcc00; color: black; }
+  #social-container a.gmail { background-color: #d44638; }
+  #social-container a.whatsapp { background-color: #25d366; }
+  #foto-lingue-container {
+    display: flex;
+    gap: 30px;
+  }
+  #foto-sinistra-container {
+    margin-right: 40px;
+    position: relative;
+    top: 140px;
+    left: 10px;
+  }
+  #foto-destra-container {
+    margin-left: 40px;
+    position: relative;
+    top: 140px;
+    left: 10px;
+  }
+  #foto-sinistra, #foto-destra {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid #aa2e30;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    object-fit: contain;
+    user-select: none;
+  }
   #foto-sinistra:hover, #foto-destra:hover {
     transform: scale(1.05);
   }
@@ -263,25 +248,24 @@
     color: #222;
   }
   #descrizione, #descrizione-seconda-foto {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  max-height: 200px;
-  overflow-y: auto;
-  padding: 14px 18px;
-  border: 2px solid #5472d3;
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.85); /* bianco trasparente 85% */
-  color: #111;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
-  display: none;
-  z-index: 10;
-}
-
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 14px 18px;
+    border: 2px solid #5472d3;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #111;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 10;
+  }
   body.dark-mode #descrizione, body.dark-mode #descrizione-seconda-foto {
     background: #333;
     color: #eeeeee;
@@ -289,25 +273,24 @@
     box-shadow: 0 0 12px #66ff99;
   }
   #demo-list {
-  position: relative; /* imposta il posizionamento relativo per poter usare top */
-  top: 90px;          /* abbassa la finestra demo di 80px */
-  width: 90%;
-  max-width: 480px;
-  max-height: 240px;
-  overflow-y: auto;
-  border: 3px solid #bd5a81;
-  border-radius: 16px;
-  box-shadow: 0 0 12px rgba(189, 90, 129, 0.7);
-  padding: 14px 18px;
-  background: linear-gradient(to bottom, #fce6f0 0%, #eec7d8 85%, #dba9b6 100%);
-  color: #111;
-  font-size: 1rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 30px auto 0 auto;
-  display: none;
-  z-index: 300;
-}
-
+    position: relative;
+    top: 90px;
+    width: 90%;
+    max-width: 480px;
+    max-height: 240px;
+    overflow-y: auto;
+    border: 3px solid #bd5a81;
+    border-radius: 16px;
+    box-shadow: 0 0 12px rgba(189, 90, 129, 0.7);
+    padding: 14px 18px;
+    background: linear-gradient(to bottom, #fce6f0 0%, #eec7d8 85%, #dba9b6 100%);
+    color: #111;
+    font-size: 1rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 30px auto 0 auto;
+    display: none;
+    z-index: 300;
+  }
   body.dark-mode #demo-list {
     background: #222;
     color: #ddd;
@@ -383,9 +366,79 @@
     75% { transform: translateY(-10px) scale(1.2); opacity: 1; }
     100% { transform: translateY(0) scale(0.5); opacity: 0.5; }
   }
+  /* MEDIA QUERY PER SMARTPHONE */
+  @media (max-width: 480px) {
+    header {
+      height: 80px;
+      padding: 0 10px;
+      font-size: 0.8rem;
+    }
+    #date-time {
+      font-size: 0.9rem;
+    }
+    #content {
+      padding: 18px 2px 90px;
+      gap: 14px;
+    }
+    #foto-lingue-container {
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+    #foto-sinistra-container, #foto-destra-container {
+      margin: 0;
+      top: 0;
+      left: 0;
+    }
+    #foto-sinistra, #foto-destra {
+      max-width: 140px;
+    }
+    #descrizione, #descrizione-seconda-foto {
+      width: 95vw;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 160px;
+      font-size: 0.90rem;
+      padding: 10px 5px;
+    }
+    #social-container {
+      top: auto;
+      bottom: 14px;
+      right: 6px;
+      left: auto;
+      flex-direction: row;
+      gap: 8px;
+      padding: 6px;
+      max-height: none;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+    #social-container a, #social-container button {
+      width: 36px;
+      height: 36px;
+      font-size: 19px;
+      border-radius: 7px;
+    }
+    #demo-list {
+      width: 98vw;
+      max-width: none;
+      left: 1vw;
+      font-size: 0.87rem;
+      padding: 8px 2px;
+      top: 40px;
+      margin: 6px auto 0 auto;
+    }
+    footer {
+      font-size: 0.85rem;
+      padding: 7px 0;
+    }
+  }
 </style>
 </head>
 <body class="dark-mode">
+
 
 <header>
   <button id="heart-button" aria-label="Cuore che pulsa">💖</button>
@@ -397,10 +450,13 @@
   <button id="dark-mode-toggle" aria-label="Toggle modalità dark/day">🌓</button>
 </header>
 
+
 <div id="content" role="main">
 
-  <!-- FontAwesome CSS nel head -->
+
+<!-- FontAwesome CSS nel head -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
 
 <!-- Barra social aggiornata -->
 <div id="social-container" aria-label="Link social media">
@@ -428,102 +484,98 @@
 </div>
 
 
-  <div id="foto-lingue-container">
-    <div id="foto-sinistra-container">
-      <img id="foto-sinistra" src="vincenzo-cartoon.png" alt="Chi sono" />
-      <div id="descrizione" class="descrizione" role="region" aria-labelledby="descrizione-label">
-        <div class="lang-selector-descrizione" role="tablist" aria-label="Selettore lingua descrizione">
-          <span data-lang="it" class="active-lang" role="tab" aria-selected="true" tabindex="0">IT</span>
-          <span data-lang="en" role="tab" tabindex="-1">EN</span>
-          <span data-lang="es" role="tab" tabindex="-1">ES</span>
-          <span data-lang="de" role="tab" tabindex="-1">DE</span>
-          <span data-lang="fr" role="tab" tabindex="-1">FR</span>
-        </div>
-        <div class="descrizione-testo" data-lang-text="it" id="descrizione-label">
-          <p>Chi sono</p>
-          <p>Mi chiamo Vincenzo, e la mia vita è una melodia fatta di emozioni, esperienze e legami profondi. Nato a Catanzaro, nella mia amata Calabria, terra di sole e passione, e nell’adorata Italia, ho imparato presto che la musica non è solo suono: è memoria, è cuore, è voce dell’anima.</p>
-          <p>Da ragazzo mi perdevo tra un pallone, un passo di danza e un microfono da karaoke. Non cercavo la perfezione, ma la gioia di condividere, il piacere di stare tra amici che vivevano — e continuano a vivere — la musica con amore e passione. Quella gioia è diventata la mia strada.</p>
-          <p>La mia ispirazione più grande? La mia famiglia. I miei figli, che crescono sotto i miei occhi, e mia madre Teresa, il mio punto fermo. I momenti vissuti con loro sono la mia linfa, e ogni parola che scrivo porta un po’ di loro dentro Vincenzo.</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="en" style="display:none;">
-          <p>Who I am</p>
-          <p>My name is Vincenzo, and my life is a melody full of emotions, experiences, and deep connections. Born in Catanzaro, in my beloved Calabria, land of sun and passion, and in the cherished Italy, I quickly learned that music is not just sound: it is memory, it is heart, it is the voice of the soul.</p>
-          <p>As a boy, I got lost between a soccer ball, a dance step, and a karaoke microphone. I did not seek perfection, but the joy of sharing, the pleasure of being with friends who lived — and continue to live — music with love and passion. That joy became my path.</p>
-          <p>My greatest inspiration? My family. My children, growing before my eyes, and my mother Teresa, my anchor. The moments shared with them are my lifeblood, and every word I write carries a bit of them inside me, Vincenzo.</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="es" style="display:none;">
-          <p>Quién soy</p>
-          <p>Me llamo Vincenzo, y mi vida es una melodía llena de emociones, experiencias y vínculos profundos. Nací en Catanzaro, en mi querida Calabria, tierra de sol y pasión, y en la adorada Italia, aprendí pronto que la música no es solo sonido: es memoria, es corazón, es voz del alma.</p>
-          <p>De niño, me perdía entre un balón, un paso de baile y un micrófono de karaoke. No buscaba la perfección, sino la alegría de compartir, el placer de estar con amigos que vivían — y continúan viviendo — la música con amor y pasión. Esa alegría se convirtió en mi camino.</p>
-          <p>¿Mi mayor inspiración? Mi familia. Mis hijos, que crecen ante mis ojos, y mi madre Teresa, mi punto firme. Los momentos vividos con ellos son mi savia, y cada palabra que escribo lleva un poco de ellos dentro de mí, Vincenzo.</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="de" style="display:none;">
-          <p>Wer ich bin</p>
-          <p>Mein Name ist Vincenzo, und mein Leben ist eine Melodie voller Emotionen, Erfahrungen und tiefer Bindungen. Geboren in Catanzaro, in meiner geliebten Kalabrien, Land der Sonne und Leidenschaft, und im verehrten Italien, habe ich schnell gelernt, dass Musik nicht nur Klang ist: Sie ist Erinnerung, sie ist Herz, sie ist die Stimme der Seele.</p>
-          <p>Als Junge verlor ich mich zwischen einem Fußball, einem Tanzschritt und einem Karaoke-Mikrofon. Ich suchte nicht die Perfektion, sondern die Freude am Teilen, das Vergnügen, mit Freunden zusammen zu sein, die Musik mit Liebe und Leidenschaft lebten — und weiterhin leben. Diese Freude wurde mein Weg.</p>
-          <p>Meine größte Inspiration? Meine Familie. Meine Kinder, die vor meinen Augen aufwachsen, und meine Mutter Teresa, mein Anker. Die Momente, die ich mit ihnen erlebe, sind meine Lebensader, und jedes Wort, das ich schreibe, trägt ein Stück von ihnen in mir, Vincenzo.</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="fr" style="display:none;">
-          <p>Qui je suis</p>
-          <p>Je m'appelle Vincenzo, et ma vie est une mélodie pleine d'émotions, d'expériences et de liens profonds. Né à Catanzaro, dans ma chère Calabre, terre de soleil et de passion, et dans l'Italie adorée, j'ai rapidement appris que la musique n'est pas seulement du son : c'est la mémoire, c'est le cœur, c'est la voix de l'âme.</p>
-          <p>Enfant, je me perdais entre un ballon, un pas de danse et un micro de karaoké. Je ne cherchais pas la perfection, mais la joie de partager, le plaisir d'être avec des amis qui vivaient — et continuent de vivre — la musique avec amour et passion. Cette joie est devenue mon chemin.</p>
-        </div>
-      </div>
-    </div>
 
-    <div id="foto-destra-container">
-      <img id="foto-destra" src="vincenzo-foto1.png" alt="Dai un'occhiata" />
-      <div id="descrizione-seconda-foto" class="descrizione" role="region" aria-labelledby="descrizione-seconda-label">
-        <div class="lang-selector-descrizione" role="tablist" aria-label="Selettore lingua seconda descrizione">
-          <span data-lang="it" class="active-lang" role="tab" aria-selected="true" tabindex="0">IT</span>
-          <span data-lang="en" role="tab" tabindex="-1">EN</span>
-          <span data-lang="es" role="tab" tabindex="-1">ES</span>
-          <span data-lang="de" role="tab" tabindex="-1">DE</span>
-          <span data-lang="fr" role="tab" tabindex="-1">FR</span>
-        </div>
-        <div class="descrizione-testo" data-lang-text="it" id="descrizione-seconda-label">
-          <h2>Ciao, sono Vincenzo</h2>
-          <p>Ciao, sono felice che tu sia arrivato fin qui, pronto a condividere amore, passione, gioia e anche dolore. Sì, la vita è fatta di tutto questo, ma nonostante le difficoltà, continuiamo sempre ad andare avanti. Questa è la nostra vera forza: la positività che ci spinge oltre ogni ostacolo.</p>
-          <p>Non sempre viviamo momenti felici, ma è in questi momenti che la musica assume un ruolo speciale. Una frase, una canzone, le parole giuste possono impadronirsi dei nostri sentimenti, farci emozionare, sorridere, persino piangere. Ed eccomi qui, pronto a condividere tutto questo con chi ha la stessa gioia di vivere e la stessa sensibilità.</p>
-          <p>Oggi scrivo soprattutto testi e, servendomi della tecnologia, creo basi musicali e trasformo pensieri in canzoni. Ogni nota che compongo è un frammento di vita, un regalo che puoi dedicare a chi ami. Perché la musica, quando nasce dal cuore, diventa non solo poesia, ma qualcosa di personale che rimane nel tempo.</p>
-          <p>Ora ti chiedo: vuoi dedicare una canzone a una persona speciale nella tua vita? Oppure vuoi regalare un ricordo unico accompagnato dalla musica? Puoi darmi qualche dettaglio o lasciare che la creatività faccia il resto; creerò qualcosa di originale, puro e unico. Come avrai visto dalle demo, tutte fatte da me, i testi li scrivo io; poi scelgo con pazienza gli strumenti e, grazie a speciali software, nasce il miracolo.</p>
-          <p>Metti alla prova la mia creatività e vedrai la meraviglia che si può realizzare. Se vuoi, contattami e decideremo insieme ogni dettaglio. Ti aspetto per intraprendere questa bella avventura.</p>
-          <p>Un saluto sincero, Vincenzo</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="en" style="display:none;">
-          <h2>Hello, I am Vincenzo</h2>
-          <p>Hello, I’m happy you made it this far, ready to share love, passion, joy, and even pain. Yes, life is made of all of this, but despite difficulties, we always keep moving forward. That’s our true strength: the positivity that drives us beyond every obstacle.</p>
-          <p>We don’t always live happy moments, but it’s in those times that music takes on a special role. A phrase, a song, the right words can capture our feelings, move us, make us smile, or even cry. And here I am, ready to share all this with those who have the same joy of living and the same sensitivity.</p>
-          <p>Today I mostly write lyrics and, with the help of technology, I create musical bases and transform thoughts into songs. Every note I compose is a fragment of life, a gift you can dedicate to someone you love. Because music, when it comes from the heart, becomes not just poetry but something personal that lasts over time.</p>
-          <p>Now I ask you: would you like to dedicate a song to someone special in your life? Or would you like to give a unique memory accompanied by music? You can give me some details or let creativity do the rest; I will create something original, pure, and unique. As you’ve seen from the demos, all made by me, I write the lyrics myself, then carefully choose the instruments, and with special software, the miracle is born.</p>
-          <p>Put my creativity to the test and you’ll see the wonder that can be created. If you’d like, contact me and we’ll decide every detail together. I look forward to starting this beautiful adventure with you.</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="es" style="display:none;">
-          <h2>Hola, soy Vincenzo</h2>
-          <p>Hola, me alegra que hayas llegado hasta aquí, listo para compartir amor, pasión, alegría e incluso dolor. Sí, la vida está hecha de todo esto, pero a pesar de las dificultades, siempre seguimos adelante. Esa es nuestra verdadera fuerza: la positividad que nos empuja más allá de cada obstáculo.</p>
-          <p>No siempre vivimos momentos felices, pero es en esos momentos cuando la música asume un papel especial. Una frase, una canción, las palabras correctas pueden apoderarse de nuestros sentimientos, emocionarnos, hacernos sonreír o incluso llorar. Y aquí estoy, listo para compartir todo esto con quienes tienen la misma alegría de vivir y la misma sensibilidad.</p>
-          <p>Hoy escribo sobre todo letras y, gracias a la tecnología, creo bases musicales y transformo pensamientos en canciones. Cada nota que compongo es un fragmento de vida, un regalo que puedes dedicar a quien amas. Porque la música, cuando nace del corazón, se convierte no solo en poesía, sino en algo personal que perdura en el tiempo.</p>
-          <p>Ahora te pregunto: ¿quieres dedicar una canción a una persona especial en tu vida? ¿O quieres regalar un recuerdo único acompañado de música? Puedes darme algunos detalles o dejar que la creatividad haga el resto; crearé algo original, puro y único. Como habrás visto en las demos, todas hechas por mí, yo mismo escribo las letras, luego elijo con paciencia los instrumentos y, gracias a programas especiales, nace el milagro.</p>
-          <p>Pon a prueba mi creatividad y verás la maravilla que se puede lograr. Si quieres, contáctame y decidiremos juntos cada detalle. Te espero para emprender esta hermosa aventura.</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="de" style="display:none;">
-          <h2>Hallo, ich bin Vincenzo</h2>
-          <p>Hallo, ich freue mich, dass du hierher gekommen bist, bereit, Liebe, Leidenschaft, Freude und auch Schmerz zu teilen. Ja, das Leben besteht aus all dem, aber trotz der Schwierigkeiten machen wir immer weiter. Das ist unsere wahre Stärke: die Positivität, die uns über jedes Hindernis hinaus antreibt.</p>
-          <p>Wir erleben nicht immer glückliche Momente, aber gerade in diesen Zeiten spielt die Musik eine besondere Rolle. Ein Satz, ein Lied, die richtigen Worte können unsere Gefühle einfangen, uns bewegen, zum Lächeln bringen oder sogar zum Weinen. Und hier bin ich, bereit, all dies mit denen zu teilen, die die gleiche Lebensfreude und Sensibilität haben.</p>
-          <p>Heute schreibe ich vor allem Texte und, mithilfe der Technologie, kreiere ich Musikbasen und verwandle Gedanken in Lieder. Jede Note, die ich komponiere, ist ein Stück Leben, ein Geschenk, das du jemandem widmen kannst, den du liebst. Denn Musik, wenn sie aus dem Herzen kommt, wird nicht nur Poesie, sondern etwas Persönliches, das in der Zeit bleibt.</p>
-          <p>Nun frage ich dich: Möchtest du einem besonderen Menschen in deinem Leben ein Lied widmen? Oder möchtest du eine einzigartige Erinnerung mit Musik schenken? Du kannst mir einige Details geben oder die Kreativität den Rest machen lassen; ich werde etwas Originelles, Reines und Einzigartiges erschaffen. Wie du an den Demos gesehen hast, alle von mir gemacht, schreibe ich die Texte selbst; dann wähle ich sorgfältig die Instrumente aus und dank spezieller Software entsteht das Wunder.</p>
-          <p>Stelle meine Kreativität auf die Probe und du wirst das Wunder sehen, das entstehen kann. Wenn du möchtest, kontaktiere mich und wir entscheiden gemeinsam jedes Detail. Ich freue mich darauf, dieses schöne Abenteuer mit dir zu beginnen.</p>
-        </div>
-        <div class="descrizione-testo" data-lang-text="fr" style="display:none;">
-          <p>Qui je suis</p>
-          <p>Je m'appelle Vincenzo, et ma vie est une mélodie pleine d'émotions, d'expériences et de liens profonds. Né à Catanzaro, dans ma chère Calabre, terre de soleil et de passion, et dans l'Italie adorée, j'ai rapidement appris que la musique n'est pas seulement du son : c'est la mémoire, c'est le cœur, c'est la voix de l'âme.</p>
-          <p>Enfant, je me perdais entre un ballon, un pas de danse et un micro de karaoké. Je ne cherchais pas la perfection, mais la joie de partager, le plaisir d'être avec des amis qui vivaient — et continuent de vivre — la musique avec amour et passion. Cette joie est devenue mon chemin.</p>
-        </div>
+<div id="foto-lingue-container">
+  <div id="foto-sinistra-container">
+    <img id="foto-sinistra" src="vincenzo-cartoon.png" alt="Chi sono" />
+    <div id="descrizione" class="descrizione" role="region" aria-labelledby="descrizione-label">
+      <div class="lang-selector-descrizione" role="tablist" aria-label="Selettore lingua descrizione">
+        <span data-lang="it" class="active-lang" role="tab" aria-selected="true" tabindex="0">IT</span>
+        <span data-lang="en" role="tab" tabindex="-1">EN</span>
+        <span data-lang="es" role="tab" tabindex="-1">ES</span>
+        <span data-lang="de" role="tab" tabindex="-1">DE</span>
+        <span data-lang="fr" role="tab" tabindex="-1">FR</span>
+      </div>
+      <div class="descrizione-testo" data-lang-text="it" id="descrizione-label">
+        <p>Chi sono</p>
+        <p>Mi chiamo Vincenzo, e la mia vita è una melodia fatta di emozioni, esperienze e legami profondi. Nato a Catanzaro, nella mia amata Calabria, terra di sole e passione, e nell’adorata Italia, ho imparato presto che la musica non è solo suono: è memoria, è cuore, è voce dell’anima.</p>
+        <p>Da ragazzo mi perdevo tra un pallone, un passo di danza e un microfono da karaoke. Non cercavo la perfezione, ma la gioia di condividere, il piacere di stare tra amici che vivevano — e continuano a vivere — la musica con amore e passione. Quella gioia è diventata la mia strada.</p>
+        <p>La mia ispirazione più grande? La mia famiglia. I miei figli, che crescono sotto i miei occhi, e mia madre Teresa, il mio punto fermo. I momenti vissuti con loro sono la mia linfa, e ogni parola che scrivo porta un po’ di loro dentro Vincenzo.</p>
+      </div>
+      <div class="descrizione-testo" data-lang-text="en" style="display:none;">
+        <p>Who I am</p>
+        <p>My name is Vincenzo, and my life is a melody full of emotions, experiences, and deep connections. Born in Catanzaro, in my beloved Calabria, land of sun and passion, and in the cherished Italy, I quickly learned that music is not just sound: it is memory, it is heart, it is the voice of the soul.</p>
+        <p>As a boy, I got lost between a soccer ball, a dance step, and a karaoke microphone. I did not seek perfection, but the joy of sharing, the pleasure of being with friends who lived — and continue to live — music with love and passion. That joy became my path.</p>
+        <p>My greatest inspiration? My family. My children, growing before my eyes, and my mother Teresa, my anchor. The moments shared with them are my lifeblood, and every word I write carries a bit of them inside me, Vincenzo.</p>
+      </div>
+      <div class="descrizione-testo" data-lang-text="es" style="display:none;">
+        <p>Quién soy</p>
+        <p>Me llamo Vincenzo, y mi vida es una melodía llena de emociones, experiencias y vínculos profundos. Nací en Catanzaro, en mi querida Calabria, tierra de sol y pasión, y en la adorada Italia, aprendí pronto que la música no es solo sonido: es memoria, es corazón, es voz del alma.</p>
+        <p>De niño, me perdía entre un balón, un paso de baile y un micrófono de karaoke. No buscaba la perfección, sino la alegría de compartir, el placer de estar con amigos que vivían — y continúan viviendo — la música con amor y pasión. Esa alegría se convirtió en mi camino.</p>
+        <p>¿Mi mayor inspiración? Mi familia. Mis hijos, que crecen ante mis ojos, y mi madre Teresa, mi punto firme. Los momentos vividos con ellos son mi savia, y cada palabra que escribo lleva un poco de ellos dentro de mí, Vincenzo.</p>
+      </div>
+      <div class="descrizione-testo" data-lang-text="de" style="display:none;">
+        <p>Wer ich bin</p>
+        <p>Mein Name ist Vincenzo, und mein Leben ist eine Melodie voller Emotionen, Erfahrungen und tiefer Bindungen. Geboren in Catanzaro, in meiner geliebten Kalabrien, Land der Sonne und Leidenschaft, und im verehrten Italien, habe ich schnell gelernt, dass Musik nicht nur Klang ist: Sie ist Erinnerung, sie ist Herz, sie ist die Stimme der Seele.</p>
+        <p>Als Junge verlor ich mich zwischen einem Fußball, einem Tanzschritt und einem Karaoke-Mikrofon. Ich suchte nicht die Perfektion, sondern die Freude am Teilen, das Vergnügen, mit Freunden zusammen zu sein, die Musik mit Liebe und Leidenschaft lebten — und weiterhin leben. Diese Freude wurde mein Weg.</p>
+        <p>Meine größte Inspiration? Meine Familie. Meine Kinder, die vor meinen Augen aufwachsen, und meine Mutter Teresa, mein Anker. Die Momente, die ich mit ihnen erlebe, sind meine Lebensader, und jedes Wort, das ich schreibe, trägt ein Stück von ihnen in mir, Vincenzo.</p>
+      </div>
+      <div class="descrizione-testo" data-lang-text="fr" style="display:none;">
+        <p>Qui je suis</p>
+        <p>Je m'appelle Vincenzo, et ma vie est une mélodie pleine d'émotions, d'expériences et de liens profonds. Né à Catanzaro, dans ma chère Calabre, terre de soleil et de passion, et dans l'Italie adorée, j'ai rapidement appris que la musique n'est pas seulement du son : c'est la mémoire, c'est le cœur, c'est la voix de l'âme.</p>
+        <p>Enfant, je me perdais entre un ballon, un pas de danse et un micro de karaoké. Je ne cherchais pas la perfection, mais la joie de partager, le plaisir d'être avec des amis qui vivaient — et continuent de vivre — la musique avec amour et passion. Cette joie est devenue mon chemin.</p>
       </div>
     </div>
   </div>
+  <div id="foto-destra-container">
+    <img id="foto-destra" src="img/vincenzo-foto-1.PNG" alt="Vincenzo foto" />
+    <div id="descrizione-seconda-foto" class="descrizione" role="region" aria-labelledby="descrizione-seconda-label">
+      <div class="lang-selector-descrizione" role="tablist" aria-label="Selettore lingua seconda descrizione">
+        <span data-lang="it" class="active-lang" role="tab" aria-selected="true" tabindex="0">IT</span>
+        <span data-lang="en" role="tab" tabindex="-1">EN</span>
+        <span data-lang="es" role="tab" tabindex="-1">ES</span>
+        <span data-lang="de" role="tab" tabindex="-1">DE</span>
+        <span data-lang="fr" role="tab" tabindex="-1">FR</span>
+      </div>
+      <div class="descrizione-testo" data-lang-text="it">
+        <h2 id="descrizione-seconda-label">Ciao, sono Vincenzo</h2>
+        <p>Ciao, sono felice che tu sia arrivato fin qui, pronto a condividere amore, passione, gioia e anche dolore. Sì, la vita è fatta di tutto questo, ma nonostante le difficoltà, continuiamo sempre ad andare avanti. Questa è la nostra vera forza: la positività che ci spinge oltre ogni ostacolo.</p>
+        <p>Non sempre viviamo momenti felici, ma è in questi momenti che la musica assume un ruolo speciale. Una frase, una canzone, le parole giuste possono impadronirsi dei nostri sentimenti, farci emozionare, sorridere, persino piangere. Ed eccomi qui, pronto a condividere tutto questo con chi ha la stessa gioia di vivere e la stessa sensibilità.</p>
+        <p>Oggi scrivo soprattutto testi e, servendomi della tecnologia, creo basi musicali e trasformo pensieri in canzoni. Ogni nota che compongo è un frammento di vita, un regalo che puoi dedicare a chi ami. Perché la musica, quando nasce dal cuore, diventa non solo poesia, ma qualcosa di personale che rimane nel tempo.</p>
+        <p>Ora ti chiedo: vuoi dedicare una canzone a una persona speciale nella tua vita? Oppure vuoi regalare un ricordo unico accompagnato dalla musica? Puoi darmi qualche dettaglio o lasciare che la creatività faccia il resto; creerò qualcosa di originale, puro e unico. Come avrai visto dalle demo, tutte fatte da me, i testi li scrivo io; poi scelgo con pazienza gli strumenti e, grazie a speciali software, nasce il miracolo.</p>
+        <p>Metti alla prova la mia creatività e vedrai la meraviglia che si può realizzare. Se vuoi, contattami e decideremo insieme ogni dettaglio. Ti aspetto per intraprendere questa bella avventura.</p>
+        </div>
+      <div class="descrizione-testo" data-lang-text="en" style="display:none;">
+        <h2>Hello, I am Vincenzo</h2>
+        <p>Hello, I’m happy you made it this far, ready to share love, passion, joy, and even pain. Yes, life is made of all of this, but despite difficulties, we always keep moving forward. That’s our true strength: the positivity that drives us beyond every obstacle.</p>
+        <p>We don’t always live happy moments, but it’s in those times that music takes on a special role. A phrase, a song, the right words can capture our feelings, move us, make us smile, or even cry. And here I am, ready to share all this with those who have the same joy of living and the same sensitivity.</p>
+        <p>Today I mostly write lyrics and, with the help of technology, I create musical bases and transform thoughts into songs. Every note I compose is a fragment of life, a gift you can dedicate to someone you love. Because music, when it comes from the heart, becomes not just poetry but something personal that lasts over time.</p>
+        <p>Now I ask you: would you like to dedicate a song to someone special in your life? Or would you like to give a unique memory accompanied by music? You can give me some details or let creativity do the rest; I will create something original, pure, and unique. As you’ve seen from the demos, all made by me, I write the lyrics myself, then carefully choose the instruments, and with special software, the miracle is born.</p>
+      </div>
+      <div class="descrizione-testo" data-lang-text="es" style="display:none;">
+        <h2>Hola, soy Vincenzo</h2>
+        <p>Hola, me alegra que hayas llegado hasta aquí, listo para compartir amor, pasión, alegría e incluso dolor. Sí, la vida está hecha de todo esto, pero a pesar de las dificultades, siempre seguimos adelante. Esa es nuestra verdadera fuerza: la positividad que nos empuja más allá de cada obstáculo.</p>
+        <p>No siempre vivimos momentos felices, pero es en esos momentos cuando la música asume un papel especial. Una frase, una canción, las palabras correctas pueden apoderarse de nuestros sentimientos, emocionarnos, hacernos sonreír o incluso llorar. Y aquí estoy, listo para compartir todo esto con quienes tienen la misma alegría de vivir y la misma sensibilidad.</p>
+        <p>Hoy escribo sobre todo letras y, gracias a la tecnología, creo bases musicales y transformo pensamientos en canciones. Cada nota que compongo es un fragmento de vida, un regalo que puedes dedicar a quien amas. Porque la música, cuando nace del corazón, se convierte no solo en poesía, sino en algo personal que perdura en el tiempo.</p>
+        <p>Ahora te pregunto: ¿quieres dedicar una canción a una persona especial en tu vida? ¿O quieres regalar un recuerdo único acompañado de música? Puedes darme algunos detalles o dejar que la creatividad haga el resto; crearé algo original, puro y único. Como habrás visto en las demos, todas hechas por mí, yo mismo escribo las letras, luego elijo con paciencia los instrumentos y, gracias a programas especiales, nace el milagro.</p>
+      </div>
+      <div class="descrizione-testo" data-lang-text="de" style="display:none;">
+        <h2>Hallo, ich bin Vincenzo</h2>
+        <p>Hallo, ich freue mich, dass du hierher gekommen bist, bereit, Liebe, Leidenschaft, Freude und auch Schmerz zu teilen. Ja, das Leben besteht aus all dem, aber trotz der Schwierigkeiten machen wir immer weiter. Das ist unsere wahre Stärke: die Positivität, die uns über jedes Hindernis hinaus antreibt.</p>
+        <p>Wir erleben nicht immer glückliche Momente, aber gerade in diesen Zeiten spielt die Musik eine besondere Rolle. Ein Satz, ein Lied, die richtigen Worte können unsere Gefühle einfangen, uns bewegen, zum Lächeln bringen oder sogar zum Weinen. Und hier bin ich, bereit, all dies mit denen zu teilen, die die gleiche Lebensfreude und Sensibilität haben.</p>
+        <p>Heute schreibe ich vor allem Texte und, mithilfe der Technologie, kreiere ich Musikbasen und verwandle Gedanken in Lieder. Jede Note, die ich komponiere, ist ein Stück Leben, ein Geschenk, das du jemandem widmen kannst, den du liebst. Denn Musik, wenn sie aus dem Herzen kommt, wird nicht nur Poesie, sondern etwas Persönliches, das in der Zeit bleibt.</p>
+        <p>Nun frage ich dich: Möchtest du einem besonderen Menschen in deinem Leben ein Lied widmen? Oder möchtest du eine einzigartige Erinnerung mit Musik schenken? Du kannst mir einige Details geben oder die Kreativität den Rest machen lassen; ich werde etwas Originelles, Reines und Einzigartiges erschaffen. Wie du an den Demos gesehen hast, alle von mir gemacht, schreibe ich die Texte selbst; dann wähle ich sorgfältig die Instrumente aus und dank spezieller Software entsteht das Wunder.</p>
+      </div>
+      <div class="descrizione-testo" data-lang-text="fr" style="display:none;">
+        <p>Qui je suis</p>
+        <p>Je m'appelle Vincenzo, et ma vie est une mélodie pleine d'émotions, d'expériences et de liens profonds. Né à Catanzaro, dans ma chère Calabre, terre de soleil et de passion, et dans l'Italie adorée, j'ai rapidement appris que la musique n'est pas seulement du son : c'est la mémoire, c'est le cœur, c'est la voix de l'âme.</p>
+        <p>Enfant, je me perdais entre un ballon, un pas de danse et un micro de karaoké. Je ne cherchais pas la perfection, mais la joie de partager, le plaisir d'être avec des amis qui vivaient — et continuent de vivre — la musique avec amour et passion. Cette joie est devenue mon chemin.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div id="demo-list" aria-label="Demo musicale"></div>
+<div id="demo-list" aria-label="Demo musicale"></div>
 
 </div>
 
@@ -689,10 +741,16 @@
       requestAnimationFrame(animateSparkle);
     }
     animateSparkle();
-  }
+  };
 </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
